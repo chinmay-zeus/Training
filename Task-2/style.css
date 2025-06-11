@@ -1,0 +1,82 @@
+body {
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    height: 138px;
+    width: 457px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.profile-img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    margin-right: 14px;
+    background: #e0e0e0;
+    box-sizing: border-box;
+}
+
+.card-content {
+    flex: 1;
+    font-weight: semi-bold;
+}
+
+.username {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #000000;
+}
+
+.message {
+    margin: 14px 0 24px 0;
+    color: #444;
+    font-family: 'Roboto';
+    font-size: 20px;
+    color: #000000;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 24px;
+    font-size: 0.98em;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    fill: #888;
+    vertical-align: middle;
+    margin-right: 14px;
+}
+
+.icon-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.icon-container:hover .icon {
+    fill: #555;
+}
+
+.interaction-value{
+    font-family: 'Roboto';
+    font-size: 15px;
+    color: #858991;
+}
