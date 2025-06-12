@@ -1,0 +1,42 @@
+.container {
+    height: 97vh;
+    display: grid;
+    grid-gap: 3px;
+    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-rows: 1fr 2fr 2fr 1fr;
+    grid-template-areas:
+        "header header header"
+        "sidebar content-1 content-1"
+        "sidebar content-2 content-3"
+        "footer footer footer";
+}
+
+.header {
+    background: linear-gradient(120deg, rgba(107, 97, 158, 1) 0%, rgba(124, 102, 216, 1) 50%, rgba(148, 121, 237, 1) 100%);
+    grid-area: header;
+}
+
+.sidebar {
+    background: linear-gradient(180deg, rgba(68, 211, 212, 1) 0%, rgba(50, 194, 183, 1) 50%, rgba(42, 162, 161, 1) 100%);
+    grid-area: sidebar;
+}
+
+.content-1 {
+    background: linear-gradient(120deg, rgba(113, 79, 210, 1) 0%, rgba(66, 127, 234, 1) 50%, rgba(79, 210, 207, 1) 100%);
+    grid-area: content-1;
+}
+
+.content-2 {
+    background: linear-gradient(120deg, rgba(113, 79, 210, 1) 0%, rgba(66, 127, 234, 1) 50%, rgba(79, 210, 207, 1) 100%);
+    grid-area: content-2;
+}
+
+.content-3 {
+    background: linear-gradient(120deg, rgba(113, 79, 210, 1) 0%, rgba(66, 127, 234, 1) 50%, rgba(79, 210, 207, 1) 100%);
+    grid-area: content-3;
+}
+
+.footer {
+    background: linear-gradient(120deg, rgba(107, 97, 158, 1) 0%, rgba(124, 102, 216, 1) 50%, rgba(148, 121, 237, 1) 100%);
+    grid-area: footer;
+}
