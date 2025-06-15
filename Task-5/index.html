@@ -4,24 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Login Page</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <title>Login Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light">
-        <img src="Assests/logo used in header.svg" alt="Description of SVG" id="quantum-logo">
-    </nav>
-    <div class="main-container">
-        <div class="form-container">
+    <header>
+        <div><img src = "Assests/icons/logo used in header.svg" alt="Loading"></div>
+    </header>
+    <main>
+        <form action="" class="mainForm">
+            <div class="loginForm">
+                <div class="content1">
+                    <div class="arrowIcon"><img src="Assests/icons/back.svg" alt=""></div>
+                    <div class="loginFormHeader">Log in with Quantum</div>
+                </div>
+                <div class="content2">
+                    <label>
+                        <input type="radio" name="schoolType" value="District">
+                        <span class="custom-radio"></span>
+                        <span class="radioText">District</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="schoolType" value="Independent School">
+                        <span class="custom-radio"></span>
+                        <span class="radioText">Independent School</span>
+                    </label>
+                </div>
+                <div class="content3">
+                    <label for="state" style="font-size: 12px;">State*</label><br>
+                    <select name="dropState" id="state">
+                        <option value="Alabama">Alabama</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Scotland">Scotland</option>
+                    </select>
+                </div>
+                <div class="content4">
+                    <label for="district" style="font-size: 12px;">District*</label>
+                    <select name="myDistrict" id="district">
+                        <option value="Alabama State District">Alambama State District</option>
+                    </select>
+                </div>
+                <div class="content5">
+                    <input class="userName" type="text" placeholder="Username/Email ID*">
 
+                    <div class="forgot"><a href="https://abc.xyz">FORGOT USERNAME?</a></div>
+                </div>
+                <div class="content6">
+                    <input type="password" class="password" name="myPassword" placeholder="Password*">
+                    <div class="forgot"><a href="https://abc.password">FORGOT PASSWORD?</a></div>
+                </div>
+                <div class="content7">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="myCheckbox">
+                        <span class="checkbox-icon"></span>
+                        <span style="font-size: 16px; font-weight: bold;">Remember me</span>
+                    </label>
+                </div>
+                <div class="content8">
+                    <input type="submit" name="login" class="logIn" value="LOG IN">
+                </div>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <div class="aboutContact">About | Contact Us</div>
+        <div class="lastFooter">
+            <div><img src="Assests/icons/logo used in footer.svg" alt="Loading"></div>
+            <div>&nbsp;|&nbsp;</div>
+            <div style="font-size: 15px; font-family: 'Quicksand'; color: #616161;"> Copyright
+                &copy; 2020-2021 &nbsp;<b>Zeus Systems Pvt. Ltd.</b>&nbsp; All righst reserved.</div>
         </div>
-    </div>
-</body>
+    </footer>
 
+</body>
 </html>
