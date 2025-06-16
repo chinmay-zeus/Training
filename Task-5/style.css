@@ -9,10 +9,9 @@ body,
 
         header {
             position: fixed;
-            z-index: 1000;
             height: 40px;
             width: 100%;
-            background-color: black;
+            background-color: #000000;
             background-image: url('Assests/header\ pattern\ image.png');
             padding-left: 24px;
             padding-top: 10.5px;
@@ -64,14 +63,13 @@ body,
             width: 240px;
             height: 30px;
             font-size: 24px;
-            font-weight: bold;
+            font-weight: 500;
             margin-left: auto;
             margin-right: auto;
-            font-weight: 20px;
         }
 
         .arrowIcon {
-            height: 30px;
+            height: 26px;
             padding-top: 2px;
         }
 
@@ -117,7 +115,6 @@ body,
             width: 20px;
             height: 24px;
             background-image: url('Assests/icons/radio-button-off.svg');
-            /* Default image (unchecked) */
             background-size: contain;
             background-repeat: no-repeat;
             cursor: pointer;
@@ -125,13 +122,10 @@ body,
             vertical-align: middle;
             position: relative;
             top: 0px;
-            /* tweak this value until it looks perfect */
         }
 
-        /* When radio is selected (checked) */
         input[type="radio"]:checked+.custom-radio {
             background-image: url('Assests/icons/radio-button-on.svg');
-            /* Change to checked image */
         }
 
         .content2 {
@@ -139,7 +133,6 @@ body,
             align-items: center;
             gap: 20px;
             height: 45px;
-            /* padding-top: 32px; */
         }
 
         .radioText {
@@ -179,6 +172,7 @@ body,
             border-left: none;
             width: 99%;
             border-bottom-width: 1px;
+            font-size: 16px;
         }
 
         .forgot {
@@ -199,11 +193,9 @@ body,
             border-top: none;
             border-bottom-width: 1px;
             width: 99%;
+            font-size: 16px;
         }
 
-        /* .forgot::placeholder {
-            font-size: 16px;
-        } */
 
         .custom-checkbox {
             display: flex;
@@ -213,20 +205,19 @@ body,
 
         .custom-checkbox input[type="checkbox"] {
             display: none;
-            /* hide native checkbox */
         }
 
         .checkbox-icon {
             width: 24px;
             height: 24px;
-            background-image: url('./quantum\ screen\ assets/icons/checkbox-unchecked.svg');
+            background-image: url('Assests/icons/checkbox-unchecked.svg');
             background-size: cover;
             margin-right: 10px;
             transition: background-image 0.3s ease;
         }
 
         .custom-checkbox input:checked+.checkbox-icon {
-            background-image: url('./quantum\ screen\ assets/icons/checkbox-checked.svg');
+            background-image: url('Assests/icons/checkbox-checked.svg');
         }
 
         .content8 {
@@ -239,20 +230,13 @@ body,
 
         .logIn {
             width: 215.51px;
-            /* Adjust width */
             height: 40px;
-            /* Adjust height */
             font-size: 14px;
-            /* Adjust font size */
             background-color: #3FD28B;
-            /* Button background color */
             color: #1F2834;
-            /* Text color */
             border: none;
-            /* Remove border */
             cursor: pointer;
             /* Add pointer cursor on hover */
             border-radius: 5px;
-            /* Optional: Rounded corners */
             box-shadow: 0px 3px 5px #0000003D;
         }
