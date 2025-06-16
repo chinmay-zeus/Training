@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+    <header>
+        <div class="quantum-logo">
+            <img src="Assests/icons/logo used in header.svg" alt="Quantum Logo">
+        </div>
+
+        <nav class="navbar">
+            <a href="#">DASHBOARD</a>
+            <a href="#">CONTENT</a>
+            <a href="#">USERS</a>
+            <a href="#">REPORTS</a>
+            <a href="#">ADMIN</a>
+            <a href="#"><img src="Assests/icons/alerts.svg" alt=""></a>
+            <a href="#"><img src="Assests/icons/announcements.svg" alt=""></a>
+            <a href="#"><img src="Assests/icons/account_circle.svg " alt=""></a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="dashboard-header">
+            <div class="dashboard-header-tabs courses-tab">
+                <div><img src="Assests/icons/courses.svg" alt="Courses"></div>
+                <div style="font-size: 24px; font-weight: bold;">4</div>
+                <div style="font-size: 24px; font-weight: 500;">Courses</div>
+            </div>
+            <div class="dashboard-header-tabs classes-tab">
+                <div><img src="Assests/icons/classes.svg" alt="Courses"></div>
+                <div style="font-size: 24px; font-weight: bold;">4</div>
+                <div style="font-size: 24px; font-weight: 500;">Courses</div>
+            </div>
+        </div>
+
+        <div class="course-sort">
+            <div class="course-show" style="font-size: 12px; font-weight: 500; color: #686868;">
+                Showing 4 of 4 courses
+            </div>
+            <div class="sorting">
+                <div style="font-size: 12px; font-weight: 500; color: #686868;">sort by:</div>
+                <label for="sort-parameter"></label>
+                <select name="sort-parameter" id="sort-parameter" class="custom-select" style="font-size: 16px; font-weight: 500; color: #333333;">
+                    <option value="course-name">Course Name</option>
+                    <option value="teacher">Teacher</option>
+                </select>
+                <div style="margin-left: 24px;">
+                    <img src="Assests/icons/sort.svg" alt="Loading">
+                </div>
+            </div>
+        </div>
+
+        <div class="courses">
+            <div class="course-card acceleration-course">
+                <div class="course-info">
+                    <div>
+                        <img src="Assests/images/imageMask-1.svg" alt="">
+                    </div>
+                    <div class="course-details">
+                        <div class="course-title">Acceleration</div>
+                        <div class="course-subject">Physics &nbsp; | &nbsp; Grade 7 <span> +2</span></div>
+                        <div class="course-subject">
+                            <strong>4</strong> Units <strong>18</strong> Lessons <strong>24</strong> Topics
+                        </div>
+                        <div class="teacher-input">
+                            <label for="teacher-class">Select Teacher / Class</label>
+                            <select name="teacher-class" id="teacher-class"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="course-card displacement-course"></div>
+            <div class="course-card biology-course"></div>
+            <div class="course-card math-course"></div>
+        </div>
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #EEEEEE;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    background-image: url('Assests/header pattern image.png');
+    padding-left: 28.88px;
+    padding-top: auto;
+    padding-bottom: auto;
+    padding-right: 24px;
+    height: 56px;
+    z-index: 1000;
+}
+
+.quantum-logo img {
+    height: 36px;
+    width: auto;
+}
+
+.navbar {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #3FD28B;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+main {
+    width: 100%;
+    background-color: #EEEEEE;
+    display: flex;
+    flex-direction: column;
+    margin-top: 56px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    background-color: #8DDC97;
+    margin: 24px;
+}
+
+.dashboard-header-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    padding: 12px;
+}
+
+.courses-tab {
+    border-bottom: #000000 4px solid;
+}
+
+.course-sort {
+    margin: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 24px;
+    border-bottom: rgba(0, 0, 0, 0.12) 1px solid;
+}
+
+.sorting {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+select {
+    border: hidden;
+    background-color: #EEEEEE;
+    border-bottom: rgba(0, 0, 0, 0.12) 1px solid;
+
+}
+
+select {
+    appearance: none;
+    background-image: url('Assests/icons/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding: 0px 88px 4px 6px;
+}
+
+custom:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.courses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 0 24px;
+    justify-self: center;
+    align-items: center;
+}
+
+.course-card {
+    width: 476px;
+    height: 246px;
+    background-color: #FFFFFF;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.course-info{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.course-details{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.course-title{
+    font-size: 16px;
+    color: #222222;
+    margin-bottom: 7px;
+}
+
+.course-subject{
+    font-size: 12px;
+    color: #666666;
+    margin-bottom: 7px;
+}
+
+.course-subject span {
+    color: #1F7A54;
+}
+
+.course-subject strong {
+    color: #222222;
+}
