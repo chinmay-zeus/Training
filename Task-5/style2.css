@@ -6,7 +6,6 @@
 
 body,
 html {
-    width: 1024px;
     width: 100%;
     overflow-x: hidden;
     background-color: #FFFFFF;
@@ -16,7 +15,8 @@ html {
 
 header {
     margin: 0 auto 0 auto;
-    width: 1024px;
+    width: 100%;
+    max-width: 1024px;
     position: fixed;
     top: 0;
     left: 0;
@@ -44,7 +44,7 @@ header {
     align-items: center;
 }
 
-.navbar a {
+.nav-links {
     text-decoration: none;
     color: #3FD28B;
     font-size: 14px;
@@ -55,19 +55,29 @@ header {
     padding-bottom: 18px;
 }
 
-.navbar a:hover {
+.nav-links:hover {
     color: #ffffff;
     border-bottom: 4px solid #ffffff;
     cursor: pointer;
 }
 
-.navbar a.active {
+.nav-links.active {
     color: #ffffff;
     border-bottom: 4px solid #ffffff;
 }
 
+.hamburger-menu-icon{
+    display: none;
+}
+
+.hamburger-menu-icon img{
+    width: 32px;
+    height: 32px;
+}
+
 main {
-    width: 1024px;
+    width: 100%;
+    max-width: 1024px;
     background-color: #EEEEEE;
     display: flex;
     flex-direction: column;
@@ -305,7 +315,8 @@ footer {
     justify-content: center;
     align-items: center;
     margin: 0 auto 0 auto;
-    width: 1024px;
+    width: 100%;
+    max-width: 1024px;
     height: 40px;
     background-color: #E0E1E1;
 }

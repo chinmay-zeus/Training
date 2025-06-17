@@ -1,0 +1,57 @@
+/* Responsive styles for navbar and courses */
+@media only screen and (max-width: 768px) {
+
+    /* Hide nav links, show hamburger */
+    .nav-links {
+        display: none !important;
+    }
+
+    .hamburger-menu-icon {
+        display: block !important;
+    }
+
+    /* Keep navbar horizontal for icons and hamburger */
+    .navbar {
+        flex-direction: row !important;
+        gap: 16px !important;
+        align-items: center !important;
+    }
+
+    /* Responsive courses layout */
+    .courses {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 0 8px;
+    }
+
+    .course-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+
+
+
+    .card-icons {
+        gap: 32px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .course-sort {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin: 16px 8px;
+        padding-bottom: 16px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        height: auto;
+        gap: 8px;
+        margin: 16px 8px;
+        padding: 8px 0;
+    }
+}
