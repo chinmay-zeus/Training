@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Navbar Active</title>
+  <style>
+    body {
+      background-color: #000;
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .navbar {
+      display: flex;
+      gap: 32px;
+      padding: 16px 24px;
+      background-color: #000;
+    }
+
+    .nav-link {
+      color: #3FD28B;
+      font-size: 14px;
+      font-weight: 500;
+      padding-bottom: 5px;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+      border-bottom: 2px solid #fff;
+    }
+
+    .nav-link.active {
+      color: #fff;
+      border-bottom: 2px solid #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a class="nav-link">DASHBOARD</a>
+    <a class="nav-link">CONTENT</a>
+    <a class="nav-link">USERS</a>
+    <a class="nav-link">REPORTS</a>
+    <a class="nav-link">ADMIN</a>
+  </nav>
+
+  <script>
+    const links = document.querySelectorAll('.nav-link');
+
+    links.forEach(link => {
+      link.addEventListener('click', function () {
+        links.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        console.log("Active set to:", this.textContent);
+      });
+    });
+  </script>
+
+</body>
+</html>

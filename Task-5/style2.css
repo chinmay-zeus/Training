@@ -6,14 +6,17 @@
 
 body,
 html {
+    width: 1024px;
     width: 100%;
     overflow-x: hidden;
-    background-color: #EEEEEE;
+    background-color: #FFFFFF;
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
 }
 
 header {
+    margin: 0 auto 0 auto;
+    width: 1024px;
     position: fixed;
     top: 0;
     left: 0;
@@ -24,8 +27,6 @@ header {
     background-color: #000000;
     background-image: url('Assests/header pattern image.png');
     padding-left: 28.88px;
-    padding-top: auto;
-    padding-bottom: auto;
     padding-right: 24px;
     height: 56px;
     z-index: 1000;
@@ -48,13 +49,29 @@ header {
     color: #3FD28B;
     font-size: 14px;
     font-weight: 500;
+    border-bottom: 4px solid transparent;
+    transition: all 0.2s ease-in-out;
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.navbar a:hover {
+    color: #ffffff;
+    border-bottom: 4px solid #ffffff;
+    cursor: pointer;
+}
+
+.navbar a.active {
+    color: #ffffff;
+    border-bottom: 4px solid #ffffff;
 }
 
 main {
-    width: 100%;
+    width: 1024px;
     background-color: #EEEEEE;
     display: flex;
     flex-direction: column;
+    margin: auto;
     margin-top: 56px;
 }
 
@@ -76,7 +93,16 @@ main {
     padding: 12px;
 }
 
-.courses-tab {
+.dashboard-header-tabs {
+    cursor: pointer;
+}
+
+.dashboard-header-tabs:hover {
+    background-color: #7CCF8A;
+}
+
+
+.dashboard-header-tabs.active {
     border-bottom: #000000 4px solid;
 }
 
@@ -100,18 +126,17 @@ select {
     border: hidden;
     background-color: #EEEEEE;
     border-bottom: rgba(0, 0, 0, 0.12) 1px solid;
-
 }
 
-select {
+.custom-select {
     appearance: none;
     background-image: url('Assests/icons/arrow-down.svg');
     background-repeat: no-repeat;
-    background-position: right 12px center;
-    padding: 0px 88px 4px 6px;
+    background-position: right -7px center;
+    padding: 2px 88px 5px 0px;
 }
 
-custom:focus {
+select:focus {
     outline: none;
     box-shadow: none;
 }
@@ -123,46 +148,186 @@ custom:focus {
     padding: 0 24px;
     justify-self: center;
     align-items: center;
+    margin-bottom: 32px;
 }
 
 .course-card {
     width: 476px;
     height: 246px;
     background-color: #FFFFFF;
-    padding: 16px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.course-info{
+.course-info {
     display: flex;
     flex-direction: row;
     gap: 16px;
+    border-bottom: rgba(0, 0, 0, 0.12) 1px solid;
+    padding-bottom: 16px;
+    margin-bottom: 15px;
 }
 
-.course-details{
+.course-details {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.course-title{
-    font-size: 16px;
-    color: #222222;
-    margin-bottom: 7px;
+.course-detials-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* flex-wrap: wrap; */
 }
 
-.course-subject{
+.course-title {
+    max-width: 250px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: normal;
+    margin-bottom: 7px;
+    line-clamp: 2;
+}
+
+.favourite-icon {
+    filter: brightness(95%) sepia(0%) saturate(0%) hue-rotate(0deg) opacity(0.6) drop-shadow(0 0 0 #EEEEEE);
+    transition: filter 0.3s ease;
+    cursor: pointer;
+    width: 20px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.favourite-icon:hover {
+    filter: brightness(100%) sepia(0%) saturate(0%) hue-rotate(0deg) opacity(1) drop-shadow(0 0 0 #EEEEEE);
+}
+
+.favourite-icon.active {
+    filter: none
+}
+
+.course-details-small {
     font-size: 12px;
     color: #666666;
     margin-bottom: 7px;
 }
 
-.course-subject span {
+.course-details-small span {
     color: #1F7A54;
 }
 
-.course-subject strong {
+.course-details-small strong {
     color: #222222;
+}
+
+.teacher-input {
+    margin-bottom: 8px;
+}
+
+.teacher-input select {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
+}
+
+.card-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 101px;
+    margin-top: auto;
+    justify-content: center;
+}
+
+.preview-icon {
+    width: 22px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.manage-course-icon {
+    width: 18px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.grade-submissions-icon {
+    width: 18px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.reports-icon {
+    width: 18px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.about-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.about {
+    padding-right: 10px;
+    border-right: rgba(0, 0, 0, 0.12) 1px solid;
+}
+
+.contact-us {
+    padding-left: 10px;
+}
+
+.about-links {
+    color: #1F7A54;
+    text-decoration: none;
+}
+
+.about-links:hover {
+    text-decoration: underline;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 0 auto;
+    width: 1024px;
+    height: 40px;
+    background-color: #E0E1E1;
+}
+
+.footer-content {
+    height: 100%;
+    font-size: 14px;
+    color: #666666;
+}
+
+.quantum-logo {
+    padding-right: 16px;
+    border-right: rgba(0, 0, 0, 0.12) 1px solid;
+    cursor: pointer;
+}
+
+.footer-text {
+    padding-left: 16px;
+    color: #616161;
+    font-size: 12px;
+}
+
+select{
+    cursor: pointer;
 }
