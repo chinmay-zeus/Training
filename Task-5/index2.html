@@ -12,7 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="style2-responsive.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -27,11 +27,186 @@
             <a href="" class="nav-links">USERS</a>
             <a href="" class="nav-links">REPORTS</a>
             <a href="" class="nav-links">ADMIN</a>
-            <a href="" class="nav-icons"><img src="Assests/icons/alerts.svg" alt="" style="width: 24px; height: 24px;"></a>
-            <a href="" class="nav-icons"><img src="Assests/icons/announcements.svg" alt="" style="width: 20px; height: 20px;"></a>
-            <a href="" class="nav-icons"><img src="Assests/icons/account_circle.svg " alt="" style="width: 34px; height: 32px;"></a>
-            <a href="" class="nav-icons hamburger-menu-icon"><img src="Assests/icons/hamburger-menu.svg" alt=""></a>
+            <div id="alert-icon" class="nav-icons"><img src="Assests/icons/alerts.svg" alt=""
+                    style="width: 24px; height: 24px;"></div>
+            <div id="announcement-icon" class="nav-icons"><img src="Assests/icons/announcements.svg" alt=""
+                    style="width: 20px; height: 20px;"></div>
+            <div id="account-icon" class="nav-icons"><img src="Assests/icons/account_circle.svg " alt=""
+                    style="width: 34px; height: 32px;"></div>
+            <div id="hamburger-icon" class="nav-icons hamburger-menu-icon"><img src="Assests/icons/hamburger-menu.svg"
+                    alt=""></div>
         </nav>
+
+        <div id="hamburger-menu-preview" class="preview-dropdown">
+            <div class="hamburger-tabs-container">
+                <a href="#" class="hamburger-nav-links">DASHBOARD</a>
+            </div>
+            <div class="hamburger-tabs-container">
+                <a href="#" class="hamburger-nav-links">CONTENT</a>
+                <div class="hamburger-tabs-dropdown">
+                    <svg width="12" height="24" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L9 1" stroke="#1F7A54" stroke-width="1.5" />
+                    </svg>
+                </div>
+            </div>
+            <div class="hamburger-tabs-container">
+                <a href="#" class="hamburger-nav-links">USERS</a>
+                <div class="hamburger-tabs-dropdown">
+                    <svg width="12" height="24" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L9 1" stroke="#1F7A54" stroke-width="1.5" />
+                    </svg>
+                </div>
+            </div>
+            <div class="hamburger-tabs-container">
+                <a href="#" class="hamburger-nav-links">REPORTS</a>
+                <div class="hamburger-tabs-dropdown">
+                    <svg width="12" height="24" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L9 1" stroke="#1F7A54" stroke-width="1.5" />
+                    </svg>
+                </div>
+            </div>
+            <div class="hamburger-tabs-container">
+                <a href="#" class="hamburger-nav-links">ADMIN</a>
+                <div class="hamburger-tabs-dropdown">
+                    <svg width="12" height="24" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L9 1" stroke="#1F7A54" stroke-width="1.5" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div id="alert-preview" class="preview-dropdown" style="opacity: 1;">
+            <div class="alert-container">
+                <div class="primary-line">
+                    <div class="alert-header">
+                        <span class="label">PA: </span>
+                        <span class="name">Wilson Kumar</span>
+                    </div>
+                    <div class="green-check">
+                        <img src="Assests/icons/green_minus.svg" alt="">
+                    </div>
+                </div>
+                <div class="secondary-line">
+                    No classes will be held on 21st Nov.
+                </div>
+                <div class="alert-info">
+                    <div class="label">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#1F7A54"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M16.5 6.5L9 14c-.8.8-.8 2 0 2.8.8.8 2 .8 2.8 0l7.8-7.8c1.6-1.6 1.6-4.2 0-5.8-1.6-1.6-4.2-1.6-5.8 0L5.4 14.4c-2 2-2 5.2 0 7.2s5.2 2 7.2 0l7.1-7.1"
+                                stroke="#6E6E6E" stroke-width="2" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                        2 Files are attached
+                    </div>
+                    <div class="label">15-Sep-2018 at 07:21 pm</div>
+                </div>
+            </div>
+            <div class="alert-container">
+                <div class="primary-line">
+                    <div class="alert-header">
+                        <span class="label">PA:  </span>
+                        <span class="name">Samson White</span>
+                    </div>
+                    <div class="green-check">
+                        <img src="Assests/icons/green_minus.svg" alt="">
+                    </div>
+                </div>
+                <div class="secondary-line">
+                    Guest lecture on Geometry on 20th September
+                </div>
+                <div class="alert-info">
+                    <div class="label">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#1F7A54"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M16.5 6.5L9 14c-.8.8-.8 2 0 2.8.8.8 2 .8 2.8 0l7.8-7.8c1.6-1.6 1.6-4.2 0-5.8-1.6-1.6-4.2-1.6-5.8 0L5.4 14.4c-2 2-2 5.2 0 7.2s5.2 2 7.2 0l7.1-7.1"
+                                stroke="#6E6E6E" stroke-width="2" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                        2 Files are attached
+                    </div>
+                    <div class="label">15-Sep-2018 at 07:21 pm</div>
+                </div>
+            </div>
+            <div class="alert-container">
+                <div class="primary-line">
+                    <div class="alert-header">
+                        <span class="label">PA: </span>
+                        <span class="name">Wilson Kumar</span>
+                    </div>
+                    <div class="green-check">
+                        <img src="Assests/icons/green_minus.svg" alt="">
+                    </div>
+                </div>
+                <div class="secondary-line">
+                    Additional course materials available on request
+                </div>
+                <div class="alert-info">
+                    <div class="label">
+                        Course: Mathematics 101
+                    </div>
+                    <div class="label">15-Sep-2018 at 07:21 pm</div>
+                </div>
+            </div>
+            <div class="alert-container">
+                <div class="primary-line">
+                    <div class="alert-header">
+                        <span class="label">PA: </span>
+                        <span class="name">Wilson Kumar</span>
+                    </div>
+                    <div class="green-check">
+                        <img src="Assests/icons/green_minus.svg" alt="">
+                    </div>
+                </div>
+                <div class="secondary-line">
+                    No classes will be held on 25th Dec
+                </div>
+                <div class="alert-info">
+                    <div class="label">
+                    </div>
+                    <div class="label">15-Sep-2018 at 07:21 pm</div>
+                </div>
+            </div>
+            <div class="alert-container">
+                <div class="primary-line">
+                    <div class="alert-header">
+                        <span class="label">PA: </span>
+                        <span class="name">Wilson Kumar</span>
+                    </div>
+                    <div class="green-check">
+                        <img src="Assests/icons/green_minus.svg" alt="">
+                    </div>
+                </div>
+                <div class="secondary-line">
+                    Additional course materials available on request
+                </div>
+                <div class="alert-info">
+                    <div class="label">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#1F7A54"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M16.5 6.5L9 14c-.8.8-.8 2 0 2.8.8.8 2 .8 2.8 0l7.8-7.8c1.6-1.6 1.6-4.2 0-5.8-1.6-1.6-4.2-1.6-5.8 0L5.4 14.4c-2 2-2 5.2 0 7.2s5.2 2 7.2 0l7.1-7.1"
+                                stroke="#6E6E6E" stroke-width="2" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        2 Files are attached
+                    </div>
+                    <div class="label">15-Sep-2018 at 07:21 pm</div>
+                </div>
+            </div>
+            <div class="alert-buttons">
+                <button class="show-all">Show All</button>
+                <button class="create-new">Create New</button>
+            </div>
+        </div>
+
+        <div id="announcement-preview" class="preview-dropdown">
+            <strong>Announcement:</strong> New course material available!
+        </div>
     </header>
 
     <main class="main-content">
@@ -83,7 +258,7 @@
                         </div>
                         <div class="teacher-input">
                             <label for="teacher-class"></label>
-                            <select name="teacher-class" id="teacher-class" class="custom-select" title="sort-course-by"
+                            <select name="teacher-class" class="custom-select" title="sort-course-by"
                                 style="background-color: #FFFFFF; height: 27px; width: 264px;">
                                 <option value="teacher-1">Mr. Frank's Class B</option>
                                 <option value="teacher-2">Mr. Frank's Class A</option>
@@ -114,7 +289,7 @@
                 <div class="course-info">
                     <img src="Assests/images/imageMask-2.svg" alt="">
                     <div class="course-details">
-                         <div class="course-detials-header">
+                        <div class="course-detials-header">
                             <div class="course-title">Displacement, Velocity and Speed</div>
                             <div class="favourite-icon">
                                 <img src="Assests/icons/favourite.svg" alt="">
@@ -126,7 +301,7 @@
                         </div>
                         <div class="teacher-input">
                             <label for="teacher-class"></label>
-                            <select name="teacher-class" id="teacher-class" class="custom-select" title="sort-course-by"
+                            <select name="teacher-class" class="custom-select" title="sort-course-by"
                                 style="background-color: #FFFFFF; height: 27px; width: 264px;" disabled>
                                 <option value="no-classes">No Classes</option>
                             </select>
@@ -152,8 +327,9 @@
                 <div class="course-info">
                     <img src="Assests/images/imageMask-3.png" alt="">
                     <div class="course-details">
-                         <div class="course-detials-header">
-                            <div class="course-title">Introduction to Biology: Micro organisms and how they affect Ecosystem</div>
+                        <div class="course-detials-header">
+                            <div class="course-title">Introduction to Biology: Micro organisms and how they affect
+                                Ecosystem</div>
                             <div class="favourite-icon">
                                 <img src="Assests/icons/favourite.svg" alt="">
                             </div>
@@ -164,7 +340,7 @@
                         </div>
                         <div class="teacher-input">
                             <label for="teacher-class"></label>
-                            <select name="teacher-class" id="teacher-class" class="custom-select" title="sort-course-by"
+                            <select name="teacher-class" class="custom-select" title="sort-course-by"
                                 style="background-color: #FFFFFF; height: 27px; width: 264px;">
                                 <option value="all-classes">All Classes</option>
                                 <option value="teacher-1">Mr. Frank's Class B</option>
@@ -196,7 +372,7 @@
                 <div class="course-info">
                     <img src="Assests/images/imageMask-2.png" alt="">
                     <div class="course-details">
-                         <div class="course-detials-header">
+                        <div class="course-detials-header">
                             <div class="course-title">Introduction to High School Mathematics</div>
                             <div class="favourite-icon">
                                 <img src="Assests/icons/favourite.svg" alt="">
@@ -241,12 +417,12 @@
     </main>
 
     <footer>
-            <div class="quantum-logo">
-                <img src="Assests/icons/logo used in footer.svg" alt="Quantum Logo" style="width: 90px; height: 24px;">
-            </div>
-            <div class="footer-text">
-                Copyright &copy; 2020-2021 <b>&nbsp;Zeus System Pvt. Ltd.</b>&nbsp; All rights reserved.
-            </div>
+        <div class="quantum-logo">
+            <img src="Assests/icons/logo used in footer.svg" alt="Quantum Logo" style="width: 90px; height: 24px;">
+        </div>
+        <div class="footer-text">
+            Copyright &copy; 2020-2021 <b>&nbsp;Zeus System Pvt. Ltd.</b>&nbsp; All rights reserved.
+        </div>
     </footer>
 
 </body>

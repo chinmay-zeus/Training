@@ -1,5 +1,5 @@
 /* Responsive styles for navbar and courses */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 804px) {
 
     /* Hide nav links, show hamburger */
     .nav-links {
