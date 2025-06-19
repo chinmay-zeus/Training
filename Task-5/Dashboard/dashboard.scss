@@ -1,0 +1,244 @@
+$white: #FFFFFF;
+$page-background: #EEEEEE;
+$black: #000000;
+$nav-link-color: #3FD28B;
+$light-border: rgba(0, 0, 0, 0.12) 1px solid;
+
+@mixin flex-center($direction: row, $justify: center, $align: center, $wrap: nowrap, $gap: 0) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: $wrap;
+    gap: $gap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 500;
+}
+
+body,
+html {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #FFFFFF;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    min-width: 490px;
+}
+
+a {
+    text-decoration: none;
+}
+
+select {
+    border: hidden;
+    background-color: #EEEEEE;
+    border-bottom: rgba(0, 0, 0, 0.12) 1px solid;
+}
+
+header {
+    margin: 0 auto 0 auto;
+    width: 100%;
+    max-width: 1024px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    @include flex-center($justify: space-between);
+    background-color: #000000;
+    background-image: url('../Assests/header pattern image.png');
+    padding-left: 28.88px;
+    padding-right: 24px;
+    height: 56px;
+    z-index: 1000;
+
+    .quantum-logo {
+        height: 36px;
+        width: auto;
+    }
+
+    .navbar {
+        @include flex-center($direction: row, $align: center, $wrap: wrap, $gap: 32px);
+
+        .nav-links {
+            color: $nav-link-color;
+            font-size: 14px;
+            line-height: 24px;
+            border-bottom: 4px solid transparent;
+            transition: all 0.2s ease-in-out;
+            padding-top: 18px;
+            padding-bottom: 18px;
+
+            &:hover {
+                color: lighten(#3FD28B, 10%);
+                border-bottom: 4px solid #ffffff;
+                cursor: pointer;
+            }
+
+            &.active {
+                color: $white;
+                border-bottom: 4px solid $white;
+            }
+        }
+
+        .hamburger-menu-icon {
+            display: none;
+
+            img {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    }
+
+}
+
+main {
+    width: 100%;
+    max-width: 1024px;
+    background-color: #EEEEEE;
+    @include flex-center($direction: column);
+    margin: auto;
+    margin-top: 56px;
+
+    .dashboard-header {
+        @include flex-center($gap: 8px);
+        padding: 12px;
+
+        .dashboard-header-tabs {
+            cursor: pointer;
+
+            &:hover {
+                color: #7CCF8A;
+            }
+
+            .active {
+                border-bottom: #000000 4px solid;
+            }
+        }
+    }
+
+    .course-sort {
+        margin: 24px;
+        margin-bottom: 16px;
+        padding-bottom: 24px;
+        border-bottom: rgba(0, 0, 0, 0.12) 1px solid;
+        @include flex-center($justify: space-between);
+    }
+
+    .course-show {
+        font-size: 12px;
+        font-weight: 500;
+        color: #686868;
+    }
+
+    .sorting {
+        @include flex-center($gap: 6px);
+
+        .custom-select {
+            appearance: none;
+            background-image: url('../Assests/icons/arrow-down.svg');
+            background-repeat: no-repeat;
+            background-position: right -7px center;
+            padding: 2px 88px 5px 0px;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    .courses {
+        @include flex-center($wrap: wrap, $gap: 24px);
+        padding: 0 24px;
+        margin-bottom: 32px;
+
+        .course-card {
+            flex: 1 1 476px;
+            max-width: 571px;
+            min-width: 264px;
+            height: 246px;
+            background-color: #FFFFFF;
+            padding: 24px;
+            @include flex-center($direction: column);
+
+            .course-info {
+                @include flex-center($gap: 16px);
+                border-bottom: rgba(0, 0, 0, 0.12) 1px solid;
+                padding-bottom: 16px;
+                margin-bottom: 15px;
+
+                .course-details {
+                    @include flex-center($direction: column);
+                    flex-grow: 1;
+
+                    .course-details-header {
+                        @include flex-center($justify: space-between, $align: flex-start);
+
+                        .course-title {
+                            max-width: 250px;
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: #222;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: normal;
+                            word-break: normal;
+                            overflow-wrap: normal;
+                            margin-bottom: 7px;
+                            line-clamp: 2;
+                        }
+
+                        .favourite-icon {
+                            filter: brightness(95%) sepia(0%) saturate(0%) hue-rotate(0deg) opacity(0.6) drop-shadow(0 0 0 #EEEEEE);
+                            transition: filter 0.3s ease;
+                            cursor: pointer;
+                            width: 20px;
+                            height: 24px;
+
+                            &:hover {
+                                filter: brightness(100%) sepia(0%) saturate(0%) hue-rotate(0deg) opacity(1) drop-shadow(0 0 0 #EEEEEE);
+                            }
+
+                            .active {
+                                filter: none
+                            }
+                        }
+                    }
+
+                    .course-details-small {
+                        font-size: 12px;
+                        color: #666666;
+                        margin-bottom: 7px;
+
+                        span {
+                            color: #1F7A54;
+                        }
+
+                        strong {
+                            color: #222222;
+                        }
+                    }
+
+                    .teacher-input {
+                        margin-bottom: 8px;
+
+                        select {
+                            font-size: 16px;
+                            font-weight: 500;
+                            color: #333333;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

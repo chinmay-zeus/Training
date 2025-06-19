@@ -104,7 +104,6 @@ main {
     justify-content: center;
     align-items: center;
     gap: 8px;
-    flex: 1;
     padding: 12px;
 }
 
@@ -198,7 +197,6 @@ select:focus {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    /* flex-wrap: wrap; */
 }
 
 .course-title {
@@ -224,7 +222,6 @@ select:focus {
     cursor: pointer;
     width: 20px;
     height: 24px;
-    cursor: pointer;
 }
 
 .favourite-icon:hover {
