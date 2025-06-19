@@ -27,7 +27,6 @@ favIcons.forEach(icon => {
     });
 });
 
-// Helper to show/hide preview with animation
 function setupPreview(triggerSelector, previewId) {
     const trigger = document.querySelector(triggerSelector);
     const preview = document.getElementById(previewId);
@@ -47,7 +46,7 @@ function setupPreview(triggerSelector, previewId) {
     function hidePreview() {
         hideTimeout = setTimeout(() => {
             preview.classList.remove('show');
-        }, 120); // small delay for smoothness
+        }, 120);
     }
 
     trigger.addEventListener('mouseenter', showPreview);
@@ -56,7 +55,6 @@ function setupPreview(triggerSelector, previewId) {
     preview.addEventListener('mouseleave', hidePreview);
 }
 
-// Setup for hamburger, alert, and announcement
 
 setupPreview('#alert-icon', 'alert-preview');
 setupPreview('#announcement-icon', 'announcement-preview');
@@ -69,9 +67,16 @@ const alertReads =  document.querySelectorAll('.green-check');
 alertReads.forEach(read => {
     read.addEventListener('click', function() {
         const icon = this.querySelector('img');
-        icon.src = "Assests/icons/green_check.svg";
+        icon.src = "../Assests/icons/green_check.svg";
         icon.style.pointerEvents = 'none';
         this.style.cursor = 'default';
         this.closest('.alert-container').classList.add('read');
+    });
+});
+
+const cardIcons = document.querySelectorAll('.card-icon');
+cardIcons.forEach(icon => {
+    icon.addEventListener('click', function() {
+        this.classList.toggle('toggle');
     });
 });

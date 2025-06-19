@@ -10,8 +10,8 @@ body,
             position: fixed;
             height: 40px;
             width: 100%;
-            background-color: #000000;
-            background-image: url('Assests/header\ pattern\ image.png');
+            background-color: #25313F;
+            background-image: url('../Assests/header\ pattern\ image.png');
             padding-left: 24px;
             padding-top: 10.5px;
             padding-bottom: 9.5px;
@@ -113,7 +113,7 @@ body,
             display: inline-block;
             width: 20px;
             height: 24px;
-            background-image: url('Assests/icons/radio-button-off.svg');
+            background-image: url('../Assests/icons/radio-button-off.svg');
             background-size: contain;
             background-repeat: no-repeat;
             cursor: pointer;
@@ -124,7 +124,7 @@ body,
         }
 
         input[type="radio"]:checked+.custom-radio {
-            background-image: url('Assests/icons/radio-button-on.svg');
+            background-image: url('../Assests/icons/radio-button-on.svg');
         }
 
         .content2 {
@@ -209,14 +209,14 @@ body,
         .checkbox-icon {
             width: 24px;
             height: 24px;
-            background-image: url('Assests/icons/checkbox-unchecked.svg');
+            background-image: url('../Assests/icons/checkbox-unchecked.svg');
             background-size: cover;
             margin-right: 10px;
             transition: background-image 0.3s ease;
         }
 
         .custom-checkbox input:checked+.checkbox-icon {
-            background-image: url('Assests/icons/checkbox-checked.svg');
+            background-image: url('../Assests/icons/checkbox-checked.svg');
         }
 
         .content8 {

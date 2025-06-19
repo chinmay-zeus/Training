@@ -1,0 +1,24 @@
+@media only screen and (max-width: 804px) {
+
+    .nav-links {
+        display: none !important;
+    }
+
+    .hamburger-menu-icon {
+        display: block !important;
+    }
+
+    .navbar {
+        flex-direction: row !important;
+        gap: 16px !important;
+        align-items: center !important;
+    }
+
+    /* .course-card {
+        flex: 1 1 571;
+        max-width: 100%;
+    } */
+}
+
+@media only screen and (max-width: 550px) {
+}
