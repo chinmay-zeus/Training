@@ -239,6 +239,39 @@ main {
                     }
                 }
             }
+
+            .card-icons {
+                @include flex-center($gap: 101px, $justify: space-around);
+                margin-top: auto;
+
+                .icon-container {
+                    .card-icon:hover {
+                        filter: brightness(50%);
+
+                        .disable {
+                            opacity: 0.4;
+                        }
+                    }
+                }
+
+                .preview-icon {
+                    width: 22px;
+                    height: 24px;
+                    cursor: pointer;
+                }
+
+                .manage-course-icon, .grade-submissions-icon {
+                    width: 18px;
+                    height: 20px;
+                    cursor: pointer;
+                }
+
+                .reports-icon {
+                    width: 18px;
+                    height: 24px;
+                    cursor: pointer;
+                }
+            }
         }
     }
 }

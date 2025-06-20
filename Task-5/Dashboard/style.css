@@ -268,7 +268,7 @@ select:focus {
     filter: brightness(50%);
 }
 
-.card-icon.toggle{
+.card-icon.disable{
     opacity: 0.4;
 }
 

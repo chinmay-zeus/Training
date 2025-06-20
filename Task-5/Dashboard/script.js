@@ -77,6 +77,6 @@ alertReads.forEach(read => {
 const cardIcons = document.querySelectorAll('.card-icon');
 cardIcons.forEach(icon => {
     icon.addEventListener('click', function() {
-        this.classList.toggle('toggle');
+        this.classList.toggle('disable');
     });
 });
