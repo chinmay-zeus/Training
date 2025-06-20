@@ -1,241 +1,243 @@
 body,
-        html {
-            margin: 0;
-            background-color: #EEEEEE;
-            overflow: auto;
-            overflow-x: hidden;
-        }
+html {
+    margin: 0;
+    background-color: #EEEEEE;
+    overflow: auto;
+    overflow-x: hidden;
+}
 
-        header {
-            position: fixed;
-            height: 40px;
-            width: 100%;
-            background-color: #25313F;
-            background-image: url('../Assests/header\ pattern\ image.png');
-            padding-left: 24px;
-            padding-top: 10.5px;
-            padding-bottom: 9.5px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+header {
+    position: fixed;
+    height: 40px;
+    width: 100%;
+    background-color: #25313F;
+    background-image: url('../Assests/header\ pattern\ image.png');
+    padding-left: 24px;
+    padding-top: 10.5px;
+    padding-bottom: 9.5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-        main {
-            margin-top: 58px;
-            /* min-height: calc(100vh - 56px - 40px);  */
-            width: 100%;
-            background-color: #EEEEEE;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-top: 20px;
-        }
+main {
+    margin-top: 58px;
+    /* min-height: calc(100vh - 56px - 40px);  */
+    width: 100%;
+    background-color: #EEEEEE;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
 
-        form {
-            width: 32%;
-            height: 80vh;
-            display: flex;
-            justify-content: center;
-        }
+form {
+    width: 100%;
+    max-width: 488px;
+    padding: 20px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
 
-        .loginForm {
-            width: 100%;
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            font-family: 'QuickSand';
-            row-gap: 20px;
-            border-top: 4px;
-            border-top-color: #3AC7EC;
-            /* margin-top: auto; */
-        }
+.loginForm {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-family: 'QuickSand';
+    row-gap: 20px;
+    border-top: 4px;
+    border-top-color: #3AC7EC;
+    /* margin-top: auto; */
+}
 
-        .content1 {
-            display: flex;
-            justify-content: space-between;
-            padding-top: 16px;
-        }
+.content1 {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 16px;
+}
 
-        .loginFormHeader {
-            width: 240px;
-            height: 30px;
-            font-size: 24px;
-            font-weight: 500;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.loginFormHeader {
+    width: 240px;
+    height: 30px;
+    font-size: 24px;
+    font-weight: 500;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-        .arrowIcon {
-            height: 26px;
-            padding-top: 2px;
-        }
+.arrowIcon {
+    height: 26px;
+    padding-top: 2px;
+}
 
-        footer {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+footer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        .lastFooter {
-            background-color: #E0E1E1;
-            height: 40px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin: auto;
-        }
+.lastFooter {
+    background-color: #E0E1E1;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
 
-        .lastFooter>div {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.lastFooter>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .aboutContact {
-            height: 34px;
-            width: 100%;
-            color: #1F7A54;
-            background-color: #EEEEEE;
-            text-align: center;
-            font-family: 'QuickSand';
-        }
-
-
-
-        input[type="radio"] {
-            display: none;
-        }
-
-        .custom-radio {
-            display: inline-block;
-            width: 20px;
-            height: 24px;
-            background-image: url('../Assests/icons/radio-button-off.svg');
-            background-size: contain;
-            background-repeat: no-repeat;
-            cursor: pointer;
-            transition: background-image 0.3s ease;
-            vertical-align: middle;
-            position: relative;
-            top: 0px;
-        }
-
-        input[type="radio"]:checked+.custom-radio {
-            background-image: url('../Assests/icons/radio-button-on.svg');
-        }
-
-        .content2 {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            height: 45px;
-        }
-
-        .radioText {
-            font-size: 16px;
-            columns: #333333;
-        }
-
-        select {
-            border: none;
-            width: 100%;
-            border-bottom: 1px solid #808080;
-            background-color: transparent;
-            padding: 2px;
-            font-size: 16px;
-            outline: none;
-        }
-
-        .content4 {
-            padding-top: 12px;
-        }
-
-        a {
-            text-decoration: none;
-            color: #1F7A54;
-        }
-
-        .content5 {
-            padding-top: 32px;
-            display: flex;
-            flex-direction: column;
-            height: 48px;
-        }
-
-        .userName {
-            border-right: none;
-            border-top: none;
-            border-left: none;
-            width: 99%;
-            border-bottom-width: 1px;
-            font-size: 16px;
-        }
-
-        .forgot {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .content6 {
-            padding-top: 2px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .password {
-            border-left: none;
-            border-right: none;
-            border-top: none;
-            border-bottom-width: 1px;
-            width: 99%;
-            font-size: 16px;
-        }
+.aboutContact {
+    height: 34px;
+    width: 100%;
+    color: #1F7A54;
+    background-color: #EEEEEE;
+    text-align: center;
+    font-family: 'QuickSand';
+}
 
 
-        .custom-checkbox {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
 
-        .custom-checkbox input[type="checkbox"] {
-            display: none;
-        }
+input[type="radio"] {
+    display: none;
+}
 
-        .checkbox-icon {
-            width: 24px;
-            height: 24px;
-            background-image: url('../Assests/icons/checkbox-unchecked.svg');
-            background-size: cover;
-            margin-right: 10px;
-            transition: background-image 0.3s ease;
-        }
+.custom-radio {
+    display: inline-block;
+    width: 20px;
+    height: 24px;
+    background-image: url('../Assests/icons/radio-button-off.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: background-image 0.3s ease;
+    vertical-align: middle;
+    position: relative;
+    top: 0px;
+}
 
-        .custom-checkbox input:checked+.checkbox-icon {
-            background-image: url('../Assests/icons/checkbox-checked.svg');
-        }
+input[type="radio"]:checked+.custom-radio {
+    background-image: url('../Assests/icons/radio-button-on.svg');
+}
 
-        .content8 {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            padding-top: 34px;
-        }
+.content2 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 45px;
+}
 
-        .logIn {
-            width: 215.51px;
-            height: 40px;
-            font-size: 14px;
-            background-color: #3FD28B;
-            color: #1F2834;
-            border: none;
-            cursor: pointer;
-            /* Add pointer cursor on hover */
-            border-radius: 5px;
-            box-shadow: 0px 3px 5px #0000003D;
-        }
+.radioText {
+    font-size: 16px;
+    columns: #333333;
+}
+
+select {
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid #808080;
+    background-color: transparent;
+    padding: 2px;
+    font-size: 16px;
+    outline: none;
+}
+
+.content4 {
+    padding-top: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: #1F7A54;
+}
+
+.content5 {
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    height: 48px;
+}
+
+.userName {
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    width: 99%;
+    border-bottom-width: 1px;
+    font-size: 16px;
+}
+
+.forgot {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.content6 {
+    padding-top: 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.password {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom-width: 1px;
+    width: 99%;
+    font-size: 16px;
+}
+
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-icon {
+    width: 24px;
+    height: 24px;
+    background-image: url('../Assests/icons/checkbox-unchecked.svg');
+    background-size: cover;
+    margin-right: 10px;
+    transition: background-image 0.3s ease;
+}
+
+.custom-checkbox input:checked+.checkbox-icon {
+    background-image: url('../Assests/icons/checkbox-checked.svg');
+}
+
+.content8 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 34px;
+}
+
+.logIn {
+    width: 215.51px;
+    height: 40px;
+    font-size: 14px;
+    background-color: #3FD28B;
+    color: #1F2834;
+    border: none;
+    cursor: pointer;
+    /* Add pointer cursor on hover */
+    border-radius: 5px;
+    box-shadow: 0px 3px 5px #0000003D;
+}
