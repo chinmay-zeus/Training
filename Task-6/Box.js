@@ -11,8 +11,6 @@ export class Box {
     this.element.style.height = "50px";
     this.element.style.backgroundColor = "#1f7a54";
     this.element.style.position = "absolute";
-    this.element.style.left = "100px";
-    this.element.style.top = "100px";
     this.element.style.cursor = "grab"
     this.element.style.touchAction = "none";
 
