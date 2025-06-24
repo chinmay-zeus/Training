@@ -1,4 +1,3 @@
-"use strict";
 const links = document.querySelectorAll('.nav-links');
 links.forEach(link => {
     link.addEventListener('click', function (e) {
