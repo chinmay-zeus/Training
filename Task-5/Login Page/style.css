@@ -55,9 +55,8 @@ form {
     padding: 20px;
     font-family: 'QuickSand';
     row-gap: 20px;
-    border-top: 4px;
-    border-top-color: #3AC7EC;
-    /* margin-top: auto; */
+    border-top: #3AC7EC 4px solid ;
+    border-radius: 2px;
 }
 
 .content1 {
