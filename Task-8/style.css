@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.excel-header {
+  display: flex;
+  align-items: center;
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #ccc;
+  height: 48px;
+  padding: 0 16px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+  color: #107d41ff; 
+  margin-right: 24px;
+}
+
+.menu-tabs {
+  display: flex;
+  gap: 16px;
+}
+
+.tab {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.tab:hover {
+  background-color: #e0e0e0;
+}

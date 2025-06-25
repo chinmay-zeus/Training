@@ -165,7 +165,7 @@ select:focus {
 
 .course-card {
     flex: 1 1 476px; 
-    max-width: 571px;
+    max-width: 476px;
     min-width: 264px;    
     height: 246px;
     background-color: #FFFFFF;
