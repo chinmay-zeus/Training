@@ -13,11 +13,6 @@
         gap: 16px !important;
         align-items: center !important;
     }
-
-    /* .course-card {
-        flex: 1 1 571;
-        max-width: 100%;
-    } */
 }
 
 @media only screen and (max-width: 550px) {
