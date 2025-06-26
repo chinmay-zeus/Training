@@ -20,3 +20,32 @@
         max-width: 571px;
     }
 }
+
+
+@media only screen and (max-width: 483px) {
+    .course-info{
+        flex-wrap: wrap;
+    }
+}
+
+@media only screen and (max-width: 341px) {
+    html{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 372px) {
+  :root {
+    --icon-base: 14px;
+  }
+
+  header{
+    padding: 10px !important;
+  }
+}
+
+@media (max-width: 346px) {
+  .navbar{
+    gap: 10px !important;
+  }
+}

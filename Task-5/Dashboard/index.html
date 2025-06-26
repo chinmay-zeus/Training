@@ -7,9 +7,9 @@
     <title>Quantum Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
+    <!-- <link
         href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+        rel="stylesheet"> -->
     <link rel="stylesheet" href="style.css">
     <!-- <link rel="stylesheet" href="dashboard.css"> -->
     <link rel="stylesheet" href="style-responsive.css">
@@ -30,13 +30,13 @@
             <a href="" class="nav-links">REPORTS</a>
             <a href="" class="nav-links">ADMIN</a>
             <div id="alert-icon" class="nav-icons"><img src="../Assests/icons/alerts.svg" alt=""
-                    style="width: 24px; height: 24px;"></div>
+                    style="width: calc(var(--icon-base) * 1.5); height: calc(var(--icon-base) * 1.5);"></div>
             <div id="announcement-icon" class="nav-icons"><img src="../Assests/icons/announcements.svg" alt=""
-                    style="width: 20px; height: 20px;"></div>
+                    style="width: calc(var(--icon-base) * 1.25); height: calc(var(--icon-base) * 1.25);"></div>
             <div id="account-icon" class="nav-icons"><img src="../Assests/icons/account_circle.svg " alt=""
-                    style="width: 34px; height: 32px;"></div>
+                    style="width: calc(var(--icon-base) * 2.125); height: calc(var(--icon-base) * 1.875);"></div>
             <div id="hamburger-icon" class="nav-icons hamburger-menu-icon"><img
-                    src="../Assests/icons/hamburger-menu.svg" alt=""></div>
+                    src="../Assests/icons/hamburger-menu.svg" alt="" style="width: calc(var(--icon-base) * 2); height: calc(var(--icon-base) * 2);"></div>
         </nav>
 
         <div id="hamburger-menu-preview" class="preview-dropdown">
@@ -318,25 +318,24 @@
         <div class="dashboard-header">
             <a src="#" class="dashboard-header-tabs courses-tab">
                 <div><img src="../Assests/icons/courses.svg" alt="Courses"></div>
-                <div style="font-size: 24px; font-weight: bold;">4</div>
-                <div style="font-size: 24px; font-weight: 500;">Courses</div>
+                <div class="tab-number">4</div>
+                <div class="tab-name">Courses</div>
             </a>
             <a src="#" class="dashboard-header-tabs classes-tab">
                 <div><img src="../Assests/icons/classes.svg" alt="Courses"></div>
-                <div style="font-size: 24px; font-weight: bold;">4</div>
-                <div style="font-size: 24px; font-weight: 500;">Classes</div>
+                <div class="tab-number">4</div>
+                <div class="tab-name">Classes</div>
             </a>
         </div>
 
         <div class="course-sort">
-            <div class="course-show" style="font-size: 12px; font-weight: 500; color: #686868;">
+            <div class="course-show">
                 Showing 4 of 4 courses
             </div>
             <div class="sorting">
-                <div style="font-size: 12px; font-weight: 500; color: #686868;">sort by:</div>
+                <div class="course-show">sort by:</div>
                 <label for="sort-parameter"></label>
-                <select name="sort-parameter" id="sort-parameter" class="custom-select" title="sort by"
-                    style="font-size: 16px; font-weight: 500; color: #333333;">
+                <select name="sort-parameter" id="sort-parameter" class="custom-select-sort" title="sort by">
                     <option value="course-name">Course Name</option>
                     <option value="teacher">Teacher</option>
                 </select>

@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../Assests/Quicksand\ font\ 1/static/Quicksand-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,9 +17,14 @@ html {
     width: 100%;
     overflow-x: hidden;
     background-color: #FFFFFF;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Quicksand';
     font-weight: 600;
-    min-width: 490px;
+    font-size: 16px;
+    /* min-width: 490px; */
+}
+
+:root {
+  --icon-base: 16px; /* base unit */
 }
 
 header {
@@ -52,7 +65,7 @@ a{
 .nav-links {
     text-decoration: none;
     color: #3FD28B;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
     border-bottom: 4px solid transparent;
     transition: all 0.2s ease-in-out;
@@ -118,6 +131,29 @@ main {
     border-bottom: #000000 4px solid;
 }
 
+.tab-number{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.tab-name{
+    font-size: 1rem; 
+    font-weight: 600;
+}
+
+.course-show{
+    font-size: 0.75rem; 
+    font-weight: 500; 
+    color: #686868;
+}
+
+.custom-select-sort{
+    font-size: 1rem; 
+    font-weight: 500; 
+    color: #333333; 
+    padding-right: 32%;
+}
+
 .course-sort {
     margin: 24px;
     display: flex;
@@ -126,6 +162,7 @@ main {
     margin-bottom: 16px;
     padding-bottom: 24px;
     border-bottom: rgba(0, 0, 0, 0.12) 1px solid;
+    gap: 15px;
 }
 
 .sorting {
@@ -145,7 +182,7 @@ select {
     background-image: url('../Assests/icons/arrow-down.svg');
     background-repeat: no-repeat;
     background-position: right -7px center;
-    padding: 2px 88px 5px 0px;
+    padding: 2px 2px 5px 0px;
 }
 
 select:focus {
@@ -167,7 +204,7 @@ select:focus {
     flex: 1 1 476px; 
     max-width: 476px;
     min-width: 264px;    
-    height: 246px;
+    height: auto;
     background-color: #FFFFFF;
     padding: 24px;
     display: flex;
@@ -182,6 +219,8 @@ select:focus {
     border-bottom: rgba(0, 0, 0, 0.12) 1px solid;
     padding-bottom: 16px;
     margin-bottom: 15px;
+    justify-content: center;
+    /* flex-wrap: wrap ; */
 }
 
 .course-details {
@@ -199,7 +238,7 @@ select:focus {
 
 .course-title {
     max-width: 250px;
-    font-size: 16px;
+    font-size: 1rem;
     color: #222;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -230,7 +269,7 @@ select:focus {
 }
 
 .course-details-small {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: #666666;
     margin-bottom: 7px;
 }
@@ -248,16 +287,16 @@ select:focus {
 }
 
 .teacher-input select {
-    font-size: 16px;
+    font-size: 1rem;
     color: #333333;
 }
 
 .card-icons {
     display: flex;
     flex-direction: row;
-    gap: 101px;
-    margin-top: auto;
-    justify-content: space-around;
+    margin: auto;
+    width: 90%;
+    justify-content: space-between;
 }
 
 .card-icon:hover {
@@ -338,7 +377,7 @@ footer {
 .footer-text {
     padding-left: 16px;
     color: #616161;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 
 select{
@@ -358,7 +397,7 @@ select{
     transform: translateY(-10px) scale(0.98);
     transition: opacity 0.3s cubic-bezier(.4,0,.2,1), transform 0.3s cubic-bezier(.4,0,.2,1);
     z-index: 2000;
-    font-size: 14px;
+    font-size: 0.875rem;
     color: #222;
     display: flex;
     flex-direction: column;
@@ -464,17 +503,17 @@ select{
     display: inline-block;
     padding: 1px;
     color: #6E6E6E;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 
 .name{
     color: #222222;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 
 .secondary-line{
     color: #222222;
-    font-size: 14px;
+    font-size: 0.875rem;
     max-width: 254px;
 }
 
@@ -501,7 +540,7 @@ select{
     background-color: #FFFFFF;
     color: #1F7A54;
     border: none;
-    font-size: 14px;
+    font-size: 0.875rem;
     cursor: pointer;
     flex: 1;
 } 

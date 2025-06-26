@@ -102,7 +102,7 @@ async function renderCourses() {
               <strong>${course.topics}</strong> Topics
             </div>
             <div class="teacher-input">
-              <select class="custom-select" style="background-color: #FFFFFF; height: 27px; width: 264px;" ${course.classes.length ? '' : 'disabled'}>
+              <select class="custom-select" style="background-color: #FFFFFF; height: 27px; width:100%" ${course.classes.length ? '' : 'disabled'}>
                 ${course.classes.length 
                   ? course.classes.map(cls => `<option>${cls}</option>`).join('')
                   : `<option>No Classes</option>`}
