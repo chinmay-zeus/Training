@@ -1,26 +1,30 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 .excel-header {
   display: flex;
   align-items: center;
-  background-color: #f3f3f3;
+  background-color: #f5f5f5ff;
   border-bottom: 1px solid #ccc;
   height: 48px;
   padding: 0 16px;
   font-family: 'Segoe UI', sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .logo {
   font-weight: bold;
   font-size: 18px;
-  color: #107d41ff; 
+  color: #107d41ff;
   margin-right: 24px;
 }
 
-.menu-tabs {
+.menu-tabs {  
   display: flex;
   gap: 16px;
 }
@@ -34,4 +38,19 @@
 
 .tab:hover {
   background-color: #e0e0e0;
+}
+
+.container {
+  overflow: scroll;
+  height: calc(100vh - 48px);
+  width: 100%;
+  background: #ffffff;
+  margin-top: 48px;
+  position: relative;
+}
+
+.canvas{
+  position: absolute;
+  top: 0;
+  left: 0;
 }
