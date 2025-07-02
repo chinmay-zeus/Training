@@ -249,7 +249,8 @@ export class Grid {
             }
             const endY = y + this._sumHeights(startRow, endRow);
 
-            this.ctx.moveTo(x + this.correctionFactor, 6);
+            const headerOffset = 10;
+            this.ctx.moveTo(x + this.correctionFactor, headerOffset);
             this.ctx.lineTo(x + this.correctionFactor, endY);
 
             x += colWidth;
@@ -294,7 +295,9 @@ export class Grid {
     _findStartRow(scrollTop) {
         let y = this.headerHeight;
         for (let i = 0; i < this.rows.length; i++) {
-            if (y + this.rows[i].height > scrollTop) return i;
+            if (y + this.rows[i].height > scrollTop) {
+                return i;
+            }
             y += this.rows[i].height;
         }
         return this.rows.length - 1;
@@ -311,7 +314,9 @@ export class Grid {
         let y = this.headerHeight;
         for (let i = 0; i < this.rows.length; i++) {
             y += this.rows[i].height;
-            if (y >= scrollBottom) return i;
+            if (y >= scrollBottom) {
+                return i;
+            }
         }
         return this.rows.length - 1;
     }
@@ -346,6 +351,53 @@ export class Grid {
             if (x >= scrollRight) return j;
         }
         return this.columns.length - 1;
+    }
+
+    /**
+     * Draws green border around selected cell.
+     * @param {number} rowIndex
+     * @param {number} colIndex
+     * @param {number} scrollLeft
+     * @param {number} scrollTop
+     */
+    renderSelection(rowIndex, colIndex, scrollLeft, scrollTop) {
+        const cellX = this.getColumnX(colIndex) - scrollLeft;
+        const cellY = this.getRowY(rowIndex) - scrollTop;
+        const cellWidth = this.columns[colIndex].width;
+        const cellHeight = this.rows[rowIndex].height;
+
+        this.ctx.save();
+        this.ctx.strokeStyle = "green";
+        this.ctx.lineWidth = 1.5; // make it visible like Excel
+        this.ctx.strokeRect(cellX, cellY, cellWidth, cellHeight);
+        this.ctx.restore();
+    }
+
+
+    /**
+     * Computes absolute X coordinate of left edge of a given column.
+     * @param {number} colIndex
+     * @returns {number}
+     */
+    getColumnX(colIndex) {
+        let x = this.headerWidth;
+        for (let i = 0; i < colIndex; i++) {
+            x += this.columns[i].width;
+        }
+        return x;
+    }
+
+    /**
+     * Computes absolute Y coordinate of top edge of a given row.
+     * @param {number} rowIndex
+     * @returns {number}
+     */
+    getRowY(rowIndex) {
+        let y = this.headerHeight;
+        for (let i = 0; i < rowIndex; i++) {
+            y += this.rows[i].height;
+        }
+        return y;
     }
 
 }

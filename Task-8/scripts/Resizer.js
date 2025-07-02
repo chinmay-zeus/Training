@@ -1,5 +1,6 @@
 /**
- * Handles column & row resizing on a grid.
+ * Supports column and row resizing in the Excel clone.
+ * Uses mouse events to detect drag on header borders.
  */
 export class Resizer {
     /**
@@ -7,8 +8,9 @@ export class Resizer {
      * @param {HTMLCanvasElement} canvas - The canvas element
      * @param {HTMLElement} container - Scroll container
      */
-    constructor(grid, canvas, container) {
+    constructor(grid, selectionManager, canvas, container) {
         this.grid = grid;
+        this.selectionManager = selectionManager;
         this.canvas = canvas;
         this.container = container;
 
@@ -172,5 +174,6 @@ export class Resizer {
             this.container.clientWidth,
             this.container.clientHeight
         );
+        this.grid.renderSelection(this.selectionManager.selectedRowIndex, this.selectionManager.selectedColIndex, this.container.scrollLeft, this.container.scrollTop);
     }
 }

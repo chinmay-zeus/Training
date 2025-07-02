@@ -1,5 +1,6 @@
 import { Grid } from "./Grid.js";
 import { Resizer } from "./Resizer.js";
+import { SelectionManager } from "./SelectionManager.js";
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
@@ -40,7 +41,10 @@ grid.render(0, 0, container.clientWidth, container.clientHeight);
 /*  
  * Setup resize handling
  */
-new Resizer(grid, canvas, container);
+const manager = new SelectionManager(grid, container);
+
+new Resizer(grid, manager, canvas, container);
+
 
 /*  
  * Sync scroll with canvas transform & re-render
@@ -50,4 +54,5 @@ container.addEventListener("scroll", () => {
     const scrollTop = container.scrollTop;
     canvas.style.transform = `translate(${scrollLeft}px, ${scrollTop}px)`;
     grid.render(scrollLeft, scrollTop, container.clientWidth, container.clientHeight);
+    grid.renderSelection(manager.selectedRowIndex, manager.selectedColIndex, scrollLeft, scrollTop);
 });
