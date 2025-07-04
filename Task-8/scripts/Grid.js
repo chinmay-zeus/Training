@@ -267,7 +267,9 @@ export class Grid {
 
     _sumWidths(startCol, endCol) {
         let sum = 0;
-        for (let j = startCol; j <= endCol; j++) sum += this.columns[j].width;
+        for (let j = startCol; j <= endCol; j++) {
+            sum += this.columns[j].width;
+        }
         return sum;
     }
 
@@ -354,24 +356,66 @@ export class Grid {
     }
 
     /**
-     * Draws green border around selected cell.
-     * @param {number} rowIndex
-     * @param {number} colIndex
-     * @param {number} scrollLeft
-     * @param {number} scrollTop
+     * Get full rect of cell by row/column index.
+     * @param {number} rowIndex 
+     * @param {number} colIndex 
+     * @returns {{x:number, y:number, width:number, height:number}}
      */
-    renderSelection(rowIndex, colIndex, scrollLeft, scrollTop) {
-        const cellX = this.getColumnX(colIndex) - scrollLeft;
-        const cellY = this.getRowY(rowIndex) - scrollTop;
-        const cellWidth = this.columns[colIndex].width;
-        const cellHeight = this.rows[rowIndex].height;
+    getCellRect(rowIndex, colIndex) {
+        let x = this.headerWidth;
+        for (let j = 0; j < colIndex; j++) {
+            x += this.columns[j].width;
+        }
 
-        this.ctx.save();
-        this.ctx.strokeStyle = "green";
-        this.ctx.lineWidth = 1.5; // make it visible like Excel
-        this.ctx.strokeRect(cellX, cellY, cellWidth, cellHeight);
-        this.ctx.restore();
+        let y = this.headerHeight;
+        for (let i = 0; i < rowIndex; i++) {
+            y += this.rows[i].height;
+        }
+
+        return {
+            x,
+            y,
+            width: this.columns[colIndex].width,
+            height: this.rows[rowIndex].height
+        };
     }
+
+    /**
+     * Get rect covering entire row.
+     * @param {number} rowIndex 
+     */
+    getRowRect(rowIndex) {
+        let y = this.headerHeight;
+        for (let i = 0; i < rowIndex; i++) {
+            y += this.rows[i].height;
+        }
+
+        return {
+            x: this.headerWidth,
+            y,
+            width: this._sumWidths(0, this.columns.length - 1),
+            height: this.rows[rowIndex].height
+        };
+    }
+
+    /**
+     * Get rect covering entire column.
+     * @param {number} colIndex 
+     */
+    getColRect(colIndex) {
+        let x = this.headerWidth;
+        for (let j = 0; j < colIndex; j++) {
+            x += this.columns[j].width;
+        }
+
+        return {
+            x,
+            y: this.headerHeight,
+            width: this.columns[colIndex].width,
+            height: this._sumHeights(0, this.rows.length - 1)
+        };
+    }
+
 
 
     /**

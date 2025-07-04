@@ -54,5 +54,5 @@ container.addEventListener("scroll", () => {
     const scrollTop = container.scrollTop;
     canvas.style.transform = `translate(${scrollLeft}px, ${scrollTop}px)`;
     grid.render(scrollLeft, scrollTop, container.clientWidth, container.clientHeight);
-    grid.renderSelection(manager.selectedRowIndex, manager.selectedColIndex, scrollLeft, scrollTop);
+    manager.renderSelection(manager.selectedRowIndex, manager.selectedColIndex, scrollLeft, scrollTop);
 });

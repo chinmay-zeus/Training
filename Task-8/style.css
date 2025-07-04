@@ -48,6 +48,7 @@
   background: #ffffff;
   margin-top: 48px;
   position: relative;
+  cursor: cell;
 }
 
 .canvas{

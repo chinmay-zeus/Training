@@ -1,3 +1,5 @@
+import { SelectionManager } from "./SelectionManager.js";
+
 /**
  * Supports column and row resizing in the Excel clone.
  * Uses mouse events to detect drag on header borders.
@@ -5,6 +7,7 @@
 export class Resizer {
     /**
      * @param {Grid} grid - The grid instance
+     * @param {SelectionManager} selectionManager 
      * @param {HTMLCanvasElement} canvas - The canvas element
      * @param {HTMLElement} container - Scroll container
      */
@@ -25,6 +28,10 @@ export class Resizer {
         this.RESIZE_MARGIN = 5;
 
         this._addEventListeners();
+    }
+
+    get isResizing() {
+        return this.isResizingCol || this.isResizingRow;
     }
 
     /**
@@ -57,11 +64,11 @@ export class Resizer {
             }
 
             if (hoverColIndex !== null) {
-                this.canvas.style.cursor = "col-resize";
+                this.canvas.style.cursor = "e-resize";
             } else if (hoverRowIndex !== null) {
-                this.canvas.style.cursor = "row-resize";
+                this.canvas.style.cursor = "n-resize";
             } else {
-                this.canvas.style.cursor = "default";
+                this.canvas.style.cursor = "cell";
             }
 
         } else if (this.isResizingCol) {
@@ -174,6 +181,6 @@ export class Resizer {
             this.container.clientWidth,
             this.container.clientHeight
         );
-        this.grid.renderSelection(this.selectionManager.selectedRowIndex, this.selectionManager.selectedColIndex, this.container.scrollLeft, this.container.scrollTop);
+        this.selectionManager.renderSelection(this.selectionManager.selectedRowIndex, this.selectionManager.selectedColIndex, this.container.scrollLeft, this.container.scrollTop);
     }
 }
