@@ -100,6 +100,7 @@ export class Grid {
     */
 
     render(scrollLeft, scrollTop, viewWidth, viewHeight) {
+        console.log("render");
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.save();
         this.ctx.translate(-scrollLeft, -scrollTop);
@@ -148,7 +149,7 @@ export class Grid {
             this.ctx.fillRect(x, 0, colWidth, this.headerHeight);
 
             this.ctx.fillStyle = this.headerTextColor;
-            this.ctx.fillText(columnName(j), x + colWidth / 2, this.headerHeight / 2);
+            this.ctx.fillText(this.columnName(j), x + colWidth / 2, this.headerHeight / 2);
 
             x += colWidth;
         }
@@ -384,17 +385,23 @@ export class Grid {
      * Get rect covering entire row.
      * @param {number} rowIndex 
      */
-    getRowRect(rowIndex) {
+    getRowRect(startRowIndex, endRowIndex) {
         let y = this.headerHeight;
-        for (let i = 0; i < rowIndex; i++) {
+        for (let i = 0; i < startRowIndex; i++) {
             y += this.rows[i].height;
         }
 
+        let height = 0;
+
+        for (let i = startRowIndex; i <= endRowIndex; i++) {
+            height += this.rows[i].height;
+        }
+
         return {
-            x: this.headerWidth,
+            x: 0,
             y,
             width: this._sumWidths(0, this.columns.length - 1),
-            height: this.rows[rowIndex].height
+            height: height
         };
     }
 
@@ -402,16 +409,21 @@ export class Grid {
      * Get rect covering entire column.
      * @param {number} colIndex 
      */
-    getColRect(colIndex) {
+    getColRect(startColIndex, endColIndex) {
         let x = this.headerWidth;
-        for (let j = 0; j < colIndex; j++) {
+        for (let j = 0; j < startColIndex; j++) {
             x += this.columns[j].width;
+        }
+
+        let width = 0;
+        for (let j = startColIndex; j <= endColIndex; j++) {
+            width += this.columns[j].width;
         }
 
         return {
             x,
-            y: this.headerHeight,
-            width: this.columns[colIndex].width,
+            y: 0,
+            width: width,
             height: this._sumHeights(0, this.rows.length - 1)
         };
     }
@@ -444,21 +456,20 @@ export class Grid {
         return y;
     }
 
-}
-
-/**
- * Generates Excel-like column name (A, B, ..., AA, AB, etc.)
- * @param {number} index 
- * @returns {string}
- */
-
-function columnName(index) {
-    let name = "";
-
-    while (index >= 0) {
-        name = String.fromCharCode((index % 26) + 65) + name;
-        index = Math.floor(index / 26) - 1;
+    /**
+     * Generates Excel-like column name (A, B, ..., AA, AB, etc.)
+     * @param {number} index 
+     * @returns {string}
+     */
+    
+    columnName(index) {
+        let name = "";
+    
+        while (index >= 0) {
+            name = String.fromCharCode((index % 26) + 65) + name;
+            index = Math.floor(index / 26) - 1;
+        }
+    
+        return name;
     }
-
-    return name;
 }
