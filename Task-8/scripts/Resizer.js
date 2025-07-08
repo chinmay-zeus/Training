@@ -39,9 +39,9 @@ export class Resizer {
      * @private
      */
     _addEventListeners() {
-        this.canvas.addEventListener("mousemove", this._onMouseMove.bind(this));
-        this.canvas.addEventListener("mousedown", this._onMouseDown.bind(this));
-        window.addEventListener("mouseup", this._onMouseUp.bind(this));
+        // this.canvas.addEventListener("mousemove", this._onMouseMove.bind(this));
+        // this.canvas.addEventListener("mousedown", this._onMouseDown.bind(this));
+        // window.addEventListener("mouseup", this._onMouseUp.bind(this));
     }
 
     /**
@@ -49,7 +49,7 @@ export class Resizer {
      * @param {MouseEvent} e 
      * @private
      */
-    _onMouseMove(e) {
+    onMouseMove(e) {
         const { x, y, gridX, gridY } = this._getMousePos(e);
 
         if (!this.isResizingCol && !this.isResizingRow) {
@@ -78,7 +78,9 @@ export class Resizer {
             this._renderGrid();
 
         } else if (this.isResizingRow) {
+            console.log(`y : ${y}, startX : ${this.startY}`);
             const dy = y - this.startY;
+            console.log(`dy : ${dy}`);
             const newHeight = Math.max(10, this.startHeight + dy);
             this.grid.rows[this.resizingRowIndex].height = newHeight;
             this._renderGrid();
@@ -90,7 +92,7 @@ export class Resizer {
      * @param {MouseEvent} e 
      * @private
      */
-    _onMouseDown(e) {
+    onMouseDown(e) {
         const { x, y, gridX, gridY } = this._getMousePos(e);
         let colIndex = null;
         let rowIndex = null;
@@ -120,7 +122,7 @@ export class Resizer {
      * Handles mouse up to stop resizing.
      * @private
      */
-    _onMouseUp() {
+    onMouseUp() {
         this.isResizingCol = false;
         this.isResizingRow = false;
     }
@@ -150,7 +152,7 @@ export class Resizer {
         let x = this.grid.headerWidth;
         for (let i = 0; i < this.grid.columns.length; i++) {
             x += this.grid.columns[i].width;
-            if (Math.abs(mouseX - x) < this.RESIZE_MARGIN) return i;
+            if (Math.abs(mouseX - x) < this.RESIZE_MARGIN) {return i;}
         }
         return null;
     }

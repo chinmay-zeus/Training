@@ -100,7 +100,6 @@ export class Grid {
     */
 
     render(scrollLeft, scrollTop, viewWidth, viewHeight) {
-        console.log("render");
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.save();
         this.ctx.translate(-scrollLeft, -scrollTop);

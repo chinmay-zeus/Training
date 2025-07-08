@@ -1,6 +1,7 @@
 import { Grid } from "./Grid.js";
 import { Resizer } from "./Resizer.js";
 import { SelectionManager } from "./SelectionManager.js";
+import { EventHandler } from "./EventHandler.js";
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
@@ -43,7 +44,7 @@ grid.render(0, 0, container.clientWidth, container.clientHeight);
  */
 const manager = new SelectionManager(grid, container);
 
-new Resizer(grid, manager, canvas, container);
+const resizer = new Resizer(grid, manager, canvas, container);
 
 
 /*  
@@ -56,3 +57,5 @@ container.addEventListener("scroll", () => {
     grid.render(scrollLeft, scrollTop, container.clientWidth, container.clientHeight);
     manager.renderSelection(manager.selectedRowIndex, manager.selectedColIndex, scrollLeft, scrollTop);
 });
+
+const dispatcher = new EventHandler(grid.canvas, container, [ manager, resizer ]);

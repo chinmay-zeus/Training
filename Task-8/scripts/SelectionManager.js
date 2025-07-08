@@ -9,9 +9,9 @@ export class SelectionManager {
         this.grid = grid;
         this.container = container;
 
-        this.selection = null;                // single selection (cell, range, row, column)
-        this.selectionType = null;            // 'cell' | 'range' | 'row' | 'column' | null
-        this.multiSelections = [];            // for ctrl+click or ctrl+drag
+        this.selection = null;
+        this.selectionType = null;
+        this.multiSelections = [];
 
         this.anchorRow = null;
         this.anchorCol = null;
@@ -29,14 +29,14 @@ export class SelectionManager {
     }
 
     _addEventListeners() {
-        this.grid.canvas.addEventListener("mousedown", this._onMouseDown.bind(this));
-        window.addEventListener("mouseup", this._onMouseUp.bind(this));
-        window.addEventListener("mousemove", this._onMouseMove.bind(this));
-        this.container.addEventListener("scroll", () => this._renderWithSelection());
-        window.addEventListener("resize", () => this._renderWithSelection());
+        // this.grid.canvas.addEventListener("mousedown", this._onMouseDown.bind(this));
+        // window.addEventListener("mouseup", this._onMouseUp.bind(this));
+        // window.addEventListener("mousemove", this._onMouseMove.bind(this));
+        // this.container.addEventListener("scroll", () => this._renderWithSelection());
+        // window.addEventListener("resize", () => this._renderWithSelection());
     }
 
-    _onMouseDown(e) {
+    onMouseDown(e) {
         if (this.grid.canvas.style.cursor === "e-resize" || this.grid.canvas.style.cursor === "n-resize") {
             return;
         }
@@ -65,7 +65,7 @@ export class SelectionManager {
         }
     }
 
-    _onMouseMove(e) {
+    onMouseMove(e) {
         if (!this.isDragging) {
             return;
         }
@@ -89,7 +89,6 @@ export class SelectionManager {
             this.selectionType = 'cell';
         }
         else if (this.dragType === 'column' && colIndexNow !== null) {
-            // When dragging columns, continue selecting columns even if mouse moves outside column header area
             const startCol = Math.min(this.clickedColIndex, colIndexNow);
             const endCol = Math.max(this.clickedColIndex, colIndexNow);
 
@@ -97,7 +96,6 @@ export class SelectionManager {
             this.selectionType = 'multipleCols';
         }
         else if (this.dragType === 'row' && rowIndexNow !== null) {
-            // When dragging rows, continue selecting rows even if mouse moves outside row header area
             const startRow = Math.min(this.clickedRowIndex, rowIndexNow);
             const endRow = Math.max(this.clickedRowIndex, rowIndexNow);
 
@@ -108,9 +106,9 @@ export class SelectionManager {
         this._renderWithSelection();
     }
 
-    _onMouseUp(e) {
+    onMouseUp(e) {
         if (!this.isDragging) {
-            this._handleClickLogic(e);  // normal click
+            this._handleClickLogic(e);
         }
         else {
             const colIndexNow = this._getColIndexAtX(this.dragCurrent.gridX);
@@ -136,12 +134,10 @@ export class SelectionManager {
                         this.multiSelections = [];
                     }
                 } else {
-                    // treat as normal click
                     this._handleClickLogic(e);
                 }
             }
             else if (this.dragType === 'column' && colIndexNow !== null) {
-                // For column drag, continue even if mouse moves outside column header area
                 const startCol = Math.min(this.clickedColIndex, colIndexNow);
                 const endCol = Math.max(this.clickedColIndex, colIndexNow);
 
@@ -163,7 +159,6 @@ export class SelectionManager {
                 }
             }
             else if (this.dragType === 'row' && rowIndexNow !== null) {
-                // For row drag, continue even if mouse moves outside row header area
                 const startRow = Math.min(this.clickedRowIndex, rowIndexNow);
                 const endRow = Math.max(this.clickedRowIndex, rowIndexNow);
 
@@ -185,7 +180,6 @@ export class SelectionManager {
                 }
             }
             else {
-                // Drag ended outside valid area, treat as normal click
                 this._handleClickLogic(e);
             }
 
@@ -207,7 +201,6 @@ export class SelectionManager {
         const isCtrl = e.ctrlKey || e.metaKey;
         const isShift = e.shiftKey;
 
-        // Clicked on row header
         if (x <= this.grid.headerWidth && y > this.grid.headerHeight) {
             const rowIndex = this._getRowIndexAtY(y);
             if (rowIndex !== null) {
@@ -228,7 +221,6 @@ export class SelectionManager {
             }
         }
 
-        // Clicked on column header
         if (y <= this.grid.headerHeight && x > this.grid.headerWidth) {
             const colIndex = this._getColIndexAtX(x);
             if (colIndex !== null) {
@@ -249,7 +241,6 @@ export class SelectionManager {
             }
         }
 
-        // Normal cell click
         const rowIndex = this._getRowIndexAtY(y);
         const colIndex = this._getColIndexAtX(x);
         if (rowIndex !== null && colIndex !== null) {
@@ -381,6 +372,19 @@ export class SelectionManager {
         const width = Math.max(start.x + start.width, end.x + end.width) - Math.min(start.x, end.x);
         const height = Math.max(start.y + start.height, end.y + end.height) - Math.min(start.y, end.y);
         this.grid.ctx.strokeRect(x, y, width, height);
+        this.grid.ctx.fillStyle = "rgba(183, 219, 198, 0.3)";
+        this.grid.ctx.fillRect(x + this.grid.cellWidth, y, width - this.grid.cellWidth, height);
+        this.grid.ctx.fillRect(x, y + this.grid.cellHeight, this.grid.cellWidth, height - this.grid.cellHeight);
+        this.grid.ctx.fillRect(x, 0 - scrollTop, width, this.grid.headerHeight);
+        this.grid.ctx.beginPath();
+        this.grid.ctx.moveTo(x, this.grid.headerHeight - scrollTop)
+        this.grid.ctx.lineTo(x + width, this.grid.headerHeight - scrollTop)
+        this.grid.ctx.stroke();
+        this.grid.ctx.fillRect(0 - scrollLeft, y, this.grid.headerWidth, height);
+        this.grid.ctx.beginPath();
+        this.grid.ctx.moveTo(this.grid.headerWidth - scrollLeft, y)
+        this.grid.ctx.lineTo(this.grid.headerWidth - scrollLeft, y + height)
+        this.grid.ctx.stroke();
     }
 
     _renderRowSelection(scrollLeft, scrollTop, startRowIndex, endRowIndex) {
@@ -392,10 +396,17 @@ export class SelectionManager {
         this.grid.ctx.fillStyle = "#f0ffffff";
         for (let i = startRowIndex; i <= endRowIndex; i++) {
             const c = this.grid.getRowRect(i, i);
-            this.grid.ctx.fillText(i+1, this.grid.headerWidth / 2 , c.y + c.height / 2 - scrollTop);
+            this.grid.ctx.fillStyle = "#e0e0e0ff";
+            this.grid.ctx.beginPath();
+            this.grid.ctx.moveTo(0, c.y + c.height - scrollTop)
+            this.grid.ctx.lineTo(this.grid.headerWidth, c.y + c.height - scrollTop)
+            this.grid.ctx.stroke();
+            this.grid.ctx.fillText(i + 1, this.grid.headerWidth / 2, c.y + c.height / 2 - scrollTop);
         }
 
         this.grid.ctx.strokeRect(selectionRect.x - scrollLeft, selectionRect.y - scrollTop, selectionRect.width, selectionRect.height);
+        this.grid.ctx.fillStyle = "rgba(233, 242, 237, 0.2)";
+        this.grid.ctx.fillRect(selectionRect.x - scrollLeft + this.grid.headerWidth, selectionRect.y - scrollTop, selectionRect.width, selectionRect.height);
     }
 
     _renderColSelection(scrollLeft, scrollTop, startColIndex, endColIndex) {
