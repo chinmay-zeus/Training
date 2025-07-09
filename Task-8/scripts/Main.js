@@ -2,6 +2,11 @@ import { Grid } from "./Grid.js";
 import { Resizer } from "./Resizer.js";
 import { SelectionManager } from "./SelectionManager.js";
 import { EventHandler } from "./EventHandler.js";
+import { InteractionManager } from "./InteractionManager.js";
+import { RowResizer } from "./RowResizer.js";
+import { Util } from "./Util.js";
+import { Config } from "./Config.js";
+import { ColumnResizer } from "./ColumnResizer.js";
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
@@ -45,6 +50,10 @@ grid.render(0, 0, container.clientWidth, container.clientHeight);
 const manager = new SelectionManager(grid, container);
 
 const resizer = new Resizer(grid, manager, canvas, container);
+const config = new Config(TOTAL_ROWS, TOTAL_COLS, CELL_WIDTH, CELL_HEIGHT, HEADER_HEIGHT, HEADER_WIDTH, SCALE)
+const util = new Util(canvas, container, grid, config)
+const rowResizer = new RowResizer(util, grid)
+const columnResizer = new ColumnResizer(util, grid)
 
 
 /*  
@@ -58,4 +67,5 @@ container.addEventListener("scroll", () => {
     manager.renderSelection(manager.selectedRowIndex, manager.selectedColIndex, scrollLeft, scrollTop);
 });
 
-const dispatcher = new EventHandler(grid.canvas, container, [ manager, resizer ]);
+// const dispatcher = new EventHandler(grid.canvas, container, [ manager, resizer ]);
+const handler = new InteractionManager(canvas, container, [rowResizer, columnResizer]);

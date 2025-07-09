@@ -1,7 +1,7 @@
 import { Grid } from "./Grid.js";
 import { Util } from "./Util.js";
 
-export class RowResizer {
+export class ColumnResizer {
     /**
      * 
      * @param {Util} util 
@@ -18,17 +18,17 @@ export class RowResizer {
      */
     onMouseDown(e) {
         const { x, y, gridX, gridY } = this.util.getMousePos(e);
-        let rowIndex = null;
+        let colIndex = null;
 
-        if (gridX <= this.grid.headerWidth) {
-            rowIndex = this.util.getRowIndexNearBorder(gridY);
+        if (gridY <= this.grid.headerHeight) {
+            colIndex = this.util.getColIndexNearBorder(gridX)
         }
 
-        if (rowIndex !== null) {
-            this.isResizingRow = true;
-            this.resizingRowIndex = rowIndex;
-            this.startY = y;
-            this.startHeight = this.grid.rows[rowIndex].height;
+        if (colIndex !== null) {
+            this.isResizingCol = true;
+            this.resizingColIndex = colIndex;
+            this.startX = x;
+            this.startWidth = this.grid.columns[colIndex].width;
         }
     }
 
@@ -39,11 +39,11 @@ export class RowResizer {
     onMouseMove(e) {
         const { x, y, gridX, gridY } = this.util.getMousePos(e);
 
-        if (!this.isResizingRow) {
-            let hoverRowIndex = this.util.getRowIndexNearBorder(gridY);
+        if (!this.isResizingCol) {
+            let hoverColIndex = this.util.getColIndexNearBorder(gridX);
 
-            if (hoverRowIndex !== null) {
-                this.util.canvas.style.cursor = "n-resize";
+            if (hoverColIndex !== null) {
+                this.util.canvas.style.cursor = "e-resize";
             }
             else {
                 this.util.canvas.style.cursor = "cell";
@@ -51,9 +51,9 @@ export class RowResizer {
         }  
         
         else {
-            const dy = y - this.startY;
-            const newHeight = Math.max(10, this.startHeight + dy);
-            this.grid.rows[this.resizingRowIndex].height = newHeight;
+            const dx = x - this.startX;
+            const newWidth = Math.max(10, this.startWidth + dx);
+            this.grid.columns[this.resizingColIndex].width = newWidth;
             this.util.renderGrid();
         }
     }
@@ -62,7 +62,7 @@ export class RowResizer {
      * Handles mouse up to stop resizing.
      */
     onMouseUp() {
-        this.isResizingRow = false;
+        this.isResizingCol = false;
     }
 
     /**
@@ -71,18 +71,18 @@ export class RowResizer {
      * @returns {boolean}
      */
     hitTest(pointer) {
-        let y = this.grid.headerHeight;
-        for (let i = 0; i < this.grid.rows.length; i++) {
-            const row = this.grid.rows[i];
-            const rowBottom = y + row.height;
+        let y = this.grid.headerWidth;
+        for (let j = 0; j < this.grid.columns.length; j++) {
+            const col = this.grid.columns[j];
+            const colRight = y + col.width;
 
             const RESIZE_MARGIN = 5;
-            if (Math.abs(pointer.y - rowBottom) <= RESIZE_MARGIN && pointer.x <= this.grid.headerWidth) {
+            if (Math.abs(pointer.x - colRight) <= RESIZE_MARGIN && pointer.y <= this.grid.headerHeight) {
                 // this.resizingRowIndex = i;
                 return true;
             }
 
-            y += row.height;
+            y += col.width;
         }
         return false;
     }

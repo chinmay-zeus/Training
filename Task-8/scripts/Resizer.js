@@ -45,6 +45,37 @@ export class Resizer {
     }
 
     /**
+     * Handles mouse down to start resize.
+     * @param {MouseEvent} e 
+     * @private
+     */
+    onMouseDown(e) {
+        const { x, y, gridX, gridY } = this._getMousePos(e);
+        let colIndex = null;
+        let rowIndex = null;
+
+        if (gridY <= this.grid.headerHeight) {
+            colIndex = this._getColIndexNearBorder(gridX);
+        }
+        if (gridX <= this.grid.headerWidth) {
+            rowIndex = this._getRowIndexNearBorder(gridY);
+        }
+
+        if (colIndex !== null) {
+            this.isResizingCol = true;
+            this.resizingColIndex = colIndex;
+            this.startX = x;
+            this.startWidth = this.grid.columns[colIndex].width;
+
+        } else if (rowIndex !== null) {
+            this.isResizingRow = true;
+            this.resizingRowIndex = rowIndex;
+            this.startY = y;
+            this.startHeight = this.grid.rows[rowIndex].height;
+        }
+    }
+
+    /**
      * Handles mouse move for resize hover & dragging.
      * @param {MouseEvent} e 
      * @private
@@ -78,9 +109,9 @@ export class Resizer {
             this._renderGrid();
 
         } else if (this.isResizingRow) {
-            console.log(`y : ${y}, startX : ${this.startY}`);
+            // console.log(`y : ${y}, startX : ${this.startY}`);
             const dy = y - this.startY;
-            console.log(`dy : ${dy}`);
+            // console.log(`dy : ${dy}`);
             const newHeight = Math.max(10, this.startHeight + dy);
             this.grid.rows[this.resizingRowIndex].height = newHeight;
             this._renderGrid();
@@ -88,39 +119,7 @@ export class Resizer {
     }
 
     /**
-     * Handles mouse down to start resize.
-     * @param {MouseEvent} e 
-     * @private
-     */
-    onMouseDown(e) {
-        const { x, y, gridX, gridY } = this._getMousePos(e);
-        let colIndex = null;
-        let rowIndex = null;
-
-        if (gridY <= this.grid.headerHeight) {
-            colIndex = this._getColIndexNearBorder(gridX);
-        }
-        if (gridX <= this.grid.headerWidth) {
-            rowIndex = this._getRowIndexNearBorder(gridY);
-        }
-
-        if (colIndex !== null) {
-            this.isResizingCol = true;
-            this.resizingColIndex = colIndex;
-            this.startX = x;
-            this.startWidth = this.grid.columns[colIndex].width;
-
-        } else if (rowIndex !== null) {
-            this.isResizingRow = true;
-            this.resizingRowIndex = rowIndex;
-            this.startY = y;
-            this.startHeight = this.grid.rows[rowIndex].height;
-        }
-    }
-
-    /**
      * Handles mouse up to stop resizing.
-     * @private
      */
     onMouseUp() {
         this.isResizingCol = false;

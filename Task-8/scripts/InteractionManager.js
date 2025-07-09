@@ -8,6 +8,17 @@ export class InteractionManager {
         canvas.addEventListener("mousedown", this._onMouseDown.bind(this));
         window.addEventListener("mousemove", this._onMouseMove.bind(this));
         window.addEventListener("mouseup", this._onMouseUp.bind(this));
+        canvas.addEventListener("mousemove", this._detectHover.bind(this));
+    }
+
+    _detectHover(e) {
+        const pointer = this._getPointer(e);
+        for (const handler of this.handlers) {
+            if ( handler.hitTest(pointer, e)) {
+                this.activeHandler = handler;
+                return;
+            }
+        }
     }
 
     _onMouseDown(e) {
