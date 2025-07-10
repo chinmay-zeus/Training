@@ -1,15 +1,18 @@
 import { Grid } from "./Grid.js";
+import { SelectionManager2 } from "./SelectionManager2.js";
 import { Util } from "./Util.js";
 
 export class ColumnResizer {
     /**
      * 
-     * @param {Util} util 
-     * @param {Grid} grid 
+     * @param {Util} util - Utility class reference
+     * @param {Grid} grid - Excel like grid
+     * @param {SelectionManager2} selectionManager - Selection Manager Object Reference
      */
-    constructor(util, grid) {
+    constructor(util, grid, selectionManager) {
         this.util = util;
         this.grid = grid;
+        this.selectionManager =  selectionManager;
     }
 
     /**
@@ -42,6 +45,8 @@ export class ColumnResizer {
         if (!this.isResizingCol) {
             let hoverColIndex = this.util.getColIndexNearBorder(gridX);
 
+            console.log(`${hoverColIndex}`);
+
             if (hoverColIndex !== null) {
                 this.util.canvas.style.cursor = "e-resize";
             }
@@ -54,7 +59,7 @@ export class ColumnResizer {
             const dx = x - this.startX;
             const newWidth = Math.max(10, this.startWidth + dx);
             this.grid.columns[this.resizingColIndex].width = newWidth;
-            this.util.renderGrid();
+            this.selectionManager.renderWithSelection();
         }
     }
 
@@ -78,7 +83,6 @@ export class ColumnResizer {
 
             const RESIZE_MARGIN = 5;
             if (Math.abs(pointer.x - colRight) <= RESIZE_MARGIN && pointer.y <= this.grid.headerHeight) {
-                // this.resizingRowIndex = i;
                 return true;
             }
 

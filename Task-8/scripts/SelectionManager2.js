@@ -12,10 +12,6 @@ export class SelectionManager2 {
         this.selection = null;
         this.selectionType = null;
         this.multiSelections = [];
-
-        this.anchorRow = null;
-        this.anchorCol = null;
-
         this.isDragging = false;
         this.dragStart = null;
         this.dragCurrent = null;
@@ -25,173 +21,9 @@ export class SelectionManager2 {
         this.clickedRowIndex = null;
         this.clickedColIndex = null;
 
-        this._addEventListeners();
     }
 
-    _addEventListeners() {
-        // this.grid.canvas.addEventListener("mousedown", this._onMouseDown.bind(this));
-        // window.addEventListener("mouseup", this._onMouseUp.bind(this));
-        // window.addEventListener("mousemove", this._onMouseMove.bind(this));
-        // this.container.addEventListener("scroll", () => this._renderWithSelection());
-        // window.addEventListener("resize", () => this._renderWithSelection());
-    }
-
-    onMouseDown(e) {
-        if (this.grid.canvas.style.cursor === "e-resize" || this.grid.canvas.style.cursor === "n-resize") {
-            return;
-        }
-        this.isCtrl = e.ctrlKey || e.metaKey;
-        const pos = this._getMousePos(e);
-        this.clickedRowIndex = this._getRowIndexAtY(pos.gridY);
-        this.clickedColIndex = this._getColIndexAtX(pos.gridX);
-
-        if (pos.gridY <= this.grid.headerHeight && pos.gridX > this.grid.headerWidth) {
-            this.dragType = 'column';
-            this.isDragging = true;
-            this.dragStart = pos;
-            this.dragCurrent = pos;
-        }
-        else if (pos.gridX <= this.grid.headerWidth && pos.gridY > this.grid.headerHeight) {
-            this.dragType = 'row';
-            this.isDragging = true;
-            this.dragStart = pos;
-            this.dragCurrent = pos;
-        }
-        else if (this.clickedRowIndex !== null && this.clickedColIndex !== null) {
-            this.dragType = 'cell';
-            this.isDragging = true;
-            this.dragStart = pos;
-            this.dragCurrent = pos;
-        }
-    }
-    
-    onMouseMove(e) {
-        if (!this.isDragging) {
-            return;
-        }
-
-        if (this.grid.canvas.style.cursor === "e-resize" || this.grid.canvas.style.cursor === "n-resize") {
-            return;
-        }
-
-        this.dragCurrent = this._getMousePos(e);
-
-        const colIndexNow = this._getColIndexAtX(this.dragCurrent.gridX);
-        const rowIndexNow = this._getRowIndexAtY(this.dragCurrent.gridY);
-
-        if (this.dragType === 'cell' && colIndexNow !== null && rowIndexNow !== null) {
-            const startRow = Math.min(this.clickedRowIndex, rowIndexNow);
-            const endRow = Math.max(this.clickedRowIndex, rowIndexNow);
-            const startCol = Math.min(this.clickedColIndex, colIndexNow);
-            const endCol = Math.max(this.clickedColIndex, colIndexNow);
-
-            this.selection = { type: 'cell', startRow, endRow, startCol, endCol };
-            this.selectionType = 'cell';
-        }
-        else if (this.dragType === 'column' && colIndexNow !== null) {
-            const startCol = Math.min(this.clickedColIndex, colIndexNow);
-            const endCol = Math.max(this.clickedColIndex, colIndexNow);
-
-            this.selection = { type: 'multipleCols', startColIndex: startCol, endColIndex: endCol };
-            this.selectionType = 'multipleCols';
-        }
-        else if (this.dragType === 'row' && rowIndexNow !== null) {
-            const startRow = Math.min(this.clickedRowIndex, rowIndexNow);
-            const endRow = Math.max(this.clickedRowIndex, rowIndexNow);
-
-            this.selection = { type: 'multipleRows', startRowIndex: startRow, endRowIndex: endRow };
-            this.selectionType = 'multipleRows';
-        }
-
-        this._renderWithSelection();
-    }
-
-    onMouseUp(e) {
-        if (!this.isDragging) {
-            this._handleClickLogic(e);
-        }
-        else {
-            const colIndexNow = this._getColIndexAtX(this.dragCurrent.gridX);
-            const rowIndexNow = this._getRowIndexAtY(this.dragCurrent.gridY);
-
-            if (this.dragType === 'cell' && colIndexNow !== null && rowIndexNow !== null) {
-                const startRow = Math.min(this.clickedRowIndex, rowIndexNow);
-                const endRow = Math.max(this.clickedRowIndex, rowIndexNow);
-                const startCol = Math.min(this.clickedColIndex, colIndexNow);
-                const endCol = Math.max(this.clickedColIndex, colIndexNow);
-
-                const draggedEnough = (startRow !== endRow) || (startCol !== endCol);
-
-                if (draggedEnough) {
-                    if (this.isCtrl) {
-                        this._toggleMultiSelection({
-                            type: 'cell', startRow, endRow, startCol, endCol
-                        });
-                    }
-                    else {
-                        this.selection = { type: 'cell', startRow, endRow, startCol, endCol };
-                        this.selectionType = 'cell';
-                        this.multiSelections = [];
-                    }
-                } else {
-                    this._handleClickLogic(e);
-                }
-            }
-            else if (this.dragType === 'column' && colIndexNow !== null) {
-                const startCol = Math.min(this.clickedColIndex, colIndexNow);
-                const endCol = Math.max(this.clickedColIndex, colIndexNow);
-
-                const draggedEnough = (startCol !== endCol);
-
-                if (draggedEnough) {
-                    if (this.isCtrl) {
-                        this._toggleMultiSelection({
-                            type: 'multipleCols', startColIndex: startCol, endColIndex: endCol
-                        });
-                    }
-                    else {
-                        this.selection = { type: 'multipleCols', startColIndex: startCol, endColIndex: endCol };
-                        this.selectionType = 'multipleCols';
-                        this.multiSelections = [];
-                    }
-                } else {
-                    this._handleClickLogic(e);
-                }
-            }
-            else if (this.dragType === 'row' && rowIndexNow !== null) {
-                const startRow = Math.min(this.clickedRowIndex, rowIndexNow);
-                const endRow = Math.max(this.clickedRowIndex, rowIndexNow);
-
-                const draggedEnough = (startRow !== endRow);
-
-                if (draggedEnough) {
-                    if (this.isCtrl) {
-                        this._toggleMultiSelection({
-                            type: 'multipleRows', startRowIndex: startRow, endRowIndex: endRow
-                        });
-                    }
-                    else {
-                        this.selection = { type: 'multipleRows', startRowIndex: startRow, endRowIndex: endRow };
-                        this.selectionType = 'multipleRows';
-                        this.multiSelections = [];
-                    }
-                } else {
-                    this._handleClickLogic(e);
-                }
-            }
-            else {
-                this._handleClickLogic(e);
-            }
-
-            this._renderWithSelection();
-        }
-
-        this.isDragging = false;
-        this.dragStart = null;
-        this.dragCurrent = null;
-    }
-
-    _handleClickLogic(e) {
+    handleClickLogic(e) {
         if (this.grid.canvas.style.cursor === "e-resize" || this.grid.canvas.style.cursor === "n-resize") {
             return;
         }
@@ -205,7 +37,7 @@ export class SelectionManager2 {
             const rowIndex = this._getRowIndexAtY(y);
             if (rowIndex !== null) {
                 if (isCtrl) {
-                    this._toggleMultiSelection({ type: 'row', rowIndex });
+                    this.toggleMultiSelection({ type: 'row', rowIndex });
                 } else if (isShift && this.selection?.type === 'row') {
                     const start = Math.min(this.selection.selectedRows[0], rowIndex);
                     const end = Math.max(this.selection.selectedRows[0], rowIndex);
@@ -216,7 +48,7 @@ export class SelectionManager2 {
                     this.selectionType = 'row';
                     this.multiSelections = [];
                 }
-                this._renderWithSelection();
+                this.renderWithSelection();
                 return;
             }
         }
@@ -225,7 +57,7 @@ export class SelectionManager2 {
             const colIndex = this._getColIndexAtX(x);
             if (colIndex !== null) {
                 if (isCtrl) {
-                    this._toggleMultiSelection({ type: 'column', colIndex });
+                    this.toggleMultiSelection({ type: 'column', colIndex });
                 } else if (isShift && this.selection?.type === 'column') {
                     const start = Math.min(this.selection.selectedCols[0], colIndex);
                     const end = Math.max(this.selection.selectedCols[0], colIndex);
@@ -236,7 +68,7 @@ export class SelectionManager2 {
                     this.selectionType = 'column';
                     this.multiSelections = [];
                 }
-                this._renderWithSelection();
+                this.renderWithSelection();
                 return;
             }
         }
@@ -245,7 +77,7 @@ export class SelectionManager2 {
         const colIndex = this._getColIndexAtX(x);
         if (rowIndex !== null && colIndex !== null) {
             if (isCtrl) {
-                this._toggleMultiSelection({ type: 'cell', startRow: rowIndex, endRow: rowIndex, startCol: colIndex, endCol: colIndex });
+                this.toggleMultiSelection({ type: 'cell', startRow: rowIndex, endRow: rowIndex, startCol: colIndex, endCol: colIndex });
             } else if (isShift && this.selection?.type === 'cell') {
                 const startRow = Math.min(this.selection.startRow, rowIndex);
                 const endRow = Math.max(this.selection.endRow, rowIndex);
@@ -258,11 +90,11 @@ export class SelectionManager2 {
                 this.selectionType = 'cell';
                 this.multiSelections = [];
             }
-            this._renderWithSelection();
+            this.renderWithSelection();
         }
     }
 
-    _toggleMultiSelection(sel) {
+    toggleMultiSelection(sel) {
         const index = this.multiSelections.findIndex(s =>
             s.type === sel.type &&
             (
@@ -307,7 +139,7 @@ export class SelectionManager2 {
         return null;
     }
 
-    _renderWithSelection() {
+    renderWithSelection() {
         this.grid.render(this.container.scrollLeft, this.container.scrollTop, this.container.clientWidth, this.container.clientHeight);
         if (this.selection) this.renderSelection();
     }
@@ -405,7 +237,7 @@ export class SelectionManager2 {
         }
 
         this.grid.ctx.strokeRect(selectionRect.x - scrollLeft, selectionRect.y - scrollTop, selectionRect.width, selectionRect.height);
-        this.grid.ctx.fillStyle = "rgba(233, 242, 237, 0.2)";
+        this.grid.ctx.fillStyle = "rgba(183, 219, 198, 0.3)";
         this.grid.ctx.fillRect(selectionRect.x - scrollLeft + this.grid.headerWidth, selectionRect.y - scrollTop, selectionRect.width, selectionRect.height);
     }
 
@@ -427,7 +259,7 @@ export class SelectionManager2 {
         }
 
         this.grid.ctx.strokeRect(selectionRect.x - scrollLeft, selectionRect.y - scrollTop, selectionRect.width, selectionRect.height);
-        this.grid.ctx.fillStyle = "rgba(233, 242, 237, 0.2)";
+        this.grid.ctx.fillStyle = "rgba(183, 219, 198, 0.3)";
         this.grid.ctx.fillRect(selectionRect.x - scrollLeft, selectionRect.y - scrollTop + this.grid.headerHeight, selectionRect.width, selectionRect.height);
     }
 }

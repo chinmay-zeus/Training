@@ -7,6 +7,10 @@ import { RowResizer } from "./RowResizer.js";
 import { Util } from "./Util.js";
 import { Config } from "./Config.js";
 import { ColumnResizer } from "./ColumnResizer.js";
+import { RowSelector } from "./RowSelector.js";
+import { SelectionManager2 } from "./SelectionManager2.js";
+import { ColumnSelector } from "./ColumnSelector.js";
+import { CellSelector } from "./CellSelector.js";
 
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
@@ -48,12 +52,16 @@ grid.render(0, 0, container.clientWidth, container.clientHeight);
  * Setup resize handling
  */
 const manager = new SelectionManager(grid, container);
+const manager2 = new SelectionManager2(grid, container);
 
 const resizer = new Resizer(grid, manager, canvas, container);
 const config = new Config(TOTAL_ROWS, TOTAL_COLS, CELL_WIDTH, CELL_HEIGHT, HEADER_HEIGHT, HEADER_WIDTH, SCALE)
 const util = new Util(canvas, container, grid, config)
-const rowResizer = new RowResizer(util, grid)
-const columnResizer = new ColumnResizer(util, grid)
+const rowResizer = new RowResizer(util, grid, manager2)
+const columnResizer = new ColumnResizer(util, grid, manager2)
+const rowSelector = new RowSelector(grid, container, manager2, util);
+const colSelector = new ColumnSelector(grid, container, manager2, util);
+const cellSelector = new CellSelector(grid, container, manager2, util);
 
 
 /*  
@@ -64,8 +72,8 @@ container.addEventListener("scroll", () => {
     const scrollTop = container.scrollTop;
     canvas.style.transform = `translate(${scrollLeft}px, ${scrollTop}px)`;
     grid.render(scrollLeft, scrollTop, container.clientWidth, container.clientHeight);
-    manager.renderSelection(manager.selectedRowIndex, manager.selectedColIndex, scrollLeft, scrollTop);
+    manager2.renderWithSelection();
 });
 
 // const dispatcher = new EventHandler(grid.canvas, container, [ manager, resizer ]);
-const handler = new InteractionManager(canvas, container, [rowResizer, columnResizer]);
+const handler = new InteractionManager(canvas, container, [rowResizer, columnResizer, rowSelector, colSelector, cellSelector]);
