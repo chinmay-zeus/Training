@@ -8,25 +8,12 @@ export class SelectionManager2 {
     constructor(grid, container) {
         this.grid = grid;
         this.container = container;
-
         this.selection = null;
         this.selectionType = null;
         this.multiSelections = [];
-        this.isDragging = false;
-        this.dragStart = null;
-        this.dragCurrent = null;
-        this.dragType = null;
-        this.isCtrl = false;
-
-        this.clickedRowIndex = null;
-        this.clickedColIndex = null;
-
     }
 
     handleClickLogic(e) {
-        if (this.grid.canvas.style.cursor === "e-resize" || this.grid.canvas.style.cursor === "n-resize") {
-            return;
-        }
         const pos = this._getMousePos(e);
         const x = pos.gridX;
         const y = pos.gridY;

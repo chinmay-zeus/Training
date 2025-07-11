@@ -59,9 +59,9 @@ const config = new Config(TOTAL_ROWS, TOTAL_COLS, CELL_WIDTH, CELL_HEIGHT, HEADE
 const util = new Util(canvas, container, grid, config)
 const rowResizer = new RowResizer(util, grid, manager2)
 const columnResizer = new ColumnResizer(util, grid, manager2)
-const rowSelector = new RowSelector(grid, container, manager2, util);
-const colSelector = new ColumnSelector(grid, container, manager2, util);
-const cellSelector = new CellSelector(grid, container, manager2, util);
+const rowSelector = new RowSelector(grid, manager2, util);
+const colSelector = new ColumnSelector(grid, manager2, util);
+const cellSelector = new CellSelector(grid, manager2, util);
 
 
 /*  
